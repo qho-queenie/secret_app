@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4D4F65251E42F1A2003518A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4F65241E42F1A2003518A8 /* AppDelegate.swift */; };
-		4D4F65271E42F1A2003518A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4F65261E42F1A2003518A8 /* ViewController.swift */; };
+		4D4F65271E42F1A2003518A8 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4F65261E42F1A2003518A8 /* LoginController.swift */; };
 		4D4F652A1E42F1A2003518A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D4F65281E42F1A2003518A8 /* Main.storyboard */; };
 		4D4F652D1E42F1A2003518A8 /* Secret_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4D4F652B1E42F1A2003518A8 /* Secret_App.xcdatamodeld */; };
 		4D4F652F1E42F1A2003518A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D4F652E1E42F1A2003518A8 /* Assets.xcassets */; };
@@ -19,6 +19,7 @@
 		4DD0BDD61E4805A400A80C40 /* Step1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD0BDD51E4805A400A80C40 /* Step1ViewController.swift */; };
 		4DD0BDD81E4805C800A80C40 /* Step2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD0BDD71E4805C800A80C40 /* Step2ViewController.swift */; };
 		4DD0BDDA1E4805DB00A80C40 /* Step3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD0BDD91E4805DB00A80C40 /* Step3ViewController.swift */; };
+		7735872E1E48254700EED1BD /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7735872D1E48254700EED1BD /* SwiftyJSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +42,7 @@
 /* Begin PBXFileReference section */
 		4D4F65211E42F1A2003518A8 /* Secret App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Secret App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D4F65241E42F1A2003518A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4D4F65261E42F1A2003518A8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4D4F65261E42F1A2003518A8 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		4D4F65291E42F1A2003518A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4D4F652C1E42F1A2003518A8 /* Secret_App.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Secret_App.xcdatamodel; sourceTree = "<group>"; };
 		4D4F652E1E42F1A2003518A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -57,6 +58,7 @@
 		4DD0BDD51E4805A400A80C40 /* Step1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Step1ViewController.swift; sourceTree = "<group>"; };
 		4DD0BDD71E4805C800A80C40 /* Step2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Step2ViewController.swift; sourceTree = "<group>"; };
 		4DD0BDD91E4805DB00A80C40 /* Step3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Step3ViewController.swift; sourceTree = "<group>"; };
+		7735872D1E48254700EED1BD /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,7 +110,8 @@
 			isa = PBXGroup;
 			children = (
 				4D4F65241E42F1A2003518A8 /* AppDelegate.swift */,
-				4D4F65261E42F1A2003518A8 /* ViewController.swift */,
+				4D4F65261E42F1A2003518A8 /* LoginController.swift */,
+				7735872D1E48254700EED1BD /* SwiftyJSON.swift */,
 				4D4F65281E42F1A2003518A8 /* Main.storyboard */,
 				4DD0BDD51E4805A400A80C40 /* Step1ViewController.swift */,
 				4DD0BDD71E4805C800A80C40 /* Step2ViewController.swift */,
@@ -275,9 +278,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D4F652D1E42F1A2003518A8 /* Secret_App.xcdatamodeld in Sources */,
+				7735872E1E48254700EED1BD /* SwiftyJSON.swift in Sources */,
 				4DD0BDD81E4805C800A80C40 /* Step2ViewController.swift in Sources */,
 				4DD0BDDA1E4805DB00A80C40 /* Step3ViewController.swift in Sources */,
-				4D4F65271E42F1A2003518A8 /* ViewController.swift in Sources */,
+				4D4F65271E42F1A2003518A8 /* LoginController.swift in Sources */,
 				4DD0BD981E48040600A80C40 /* RegistrationController.swift in Sources */,
 				4DD0BDD61E4805A400A80C40 /* Step1ViewController.swift in Sources */,
 				4D4F65251E42F1A2003518A8 /* AppDelegate.swift in Sources */,
