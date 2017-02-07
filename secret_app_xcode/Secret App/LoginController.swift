@@ -2,33 +2,65 @@ import UIKit
 
 
 
-
-
-
-
 class LoginController: UIViewController {
 
+    @IBOutlet weak var password_login: UITextField!
+    @IBOutlet weak var email_login: UITextField!
+    @IBOutlet weak var login_button: UIButton!
+    
+    @IBAction func login_touch(_ sender: Any) {
+        print (password_login.text)
+        print (email_login.text)
+        
+        var request = URLRequest(url: URL(string: "http://localhost:5000/login")!)
+        request.httpMethod = "POST"
+        let postString = "email=\(email_login.text!)&password=\(password_login.text!)"
+        print (postString)
+        request.httpBody = postString.data(using: .utf8)
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {                                                 // check for fundamental networking error
+                print("error=\(error)")
+                return
+            }
+            
+            var httpResponse: HTTPURLResponse = response as! HTTPURLResponse
+            
+            // Since the incoming cookies will be stored in one of the header fields in the HTTP Response, parse through the header fields to find the cookie field and save the data
+            
+            let cookies = HTTPCookie.cookies(withResponseHeaderFields: httpResponse.allHeaderFields as! [String : String], for: (response?.url!)!) as! [HTTPCookie]
+            
+            HTTPCookieStorage.shared.setCookies(cookies as [AnyObject] as! [HTTPCookie], for: response?.url!, mainDocumentURL: nil)
+            
+//            print ("hi")
+//            print (cookies)
+
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print("response = \(response)")
+            }
+            
+            let responseString = String(data: data, encoding: .utf8)
+            print("responseString = \(responseString)")
+//            print (self)
+//            self.segueToNext()
+            
+            
+        }
+        task.resume()
+        
+        print ("after resume")
+        
+    }
+    
+//    func segueToNext(){
+//        performSegue(withIdentifier: "mySegueID", sender: nil)
+//    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("login controller")
-        let url = URL(string: "http://localhost:5000/ajax_test")
-        // Create an NSURLSession to handle the request tasks
-        let session = URLSession.shared
-        // Create a "data task" which will request some data from a URL and then run a completion handler after it is done
-        let task = session.dataTask(with: url!, completionHandler: {
-            data, response, error in
-            // We get data, response, and error back. Data contains the JSON data, Response contains the headers and other information about the response, and Error contains an error if one occured
-            // A "Do-Try-Catch" block involves a try statement with some catch block for catching any errors thrown by the try statement.
-            do {
-                let json = JSON(data: data!)
-                print(json)
-            } catch {
-                print("Something went wrong")
-            }
-        })
-        // Actually "execute" the task. This is the line that actually makes the request that we set up above
-        task.resume()
-        // Do any additional setup after loading the view, typically from a nib.
+
     }
 
     override func didReceiveMemoryWarning() {
