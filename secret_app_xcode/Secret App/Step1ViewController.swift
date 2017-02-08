@@ -8,10 +8,13 @@ class Step1ViewController: UIViewController {
         super.viewDidLoad()
         print("Step 1 View Controller")
         
-        var request = URLRequest(url: URL(string: "http://localhost:5000/display_events")!)
+//        let auth = "?id=\(LoginSession["id"])&unique_key=\(LoginSession["unique_key"])"
+        let url = URL(string: "http://localhost:5000/display_events")
+        
+        var request = URLRequest(url: url!)
         
         request.httpMethod = "GET"
-
+        
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {                                                 // check for fundamental networking error
                 print("error=\(error)")
@@ -27,8 +30,7 @@ class Step1ViewController: UIViewController {
             print("responseString = \(responseString)")
             
             
-            print (HTTPCookieStorage.shared)
-            
+        
         }
         task.resume()
         

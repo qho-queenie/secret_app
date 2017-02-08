@@ -18,21 +18,11 @@ class RegistrationController: UIViewController {
     }
     
     @IBAction func to_reg(_ sender: UIButton) {
-//        let user_inputs = [
-//            "first_name" : first_name.text!,
-//            "last_name" : last_name.text!,
-//            "email" : email.text!,
-//            "password" : password.text!,
-//            "confirm_password" : confirm_password.text!]
-//        as [String : Any?]
-
-//        print (JSON(user_inputs))
-//        let user_inputs_json (JSON(user_inputs).rawString([.castNilToNSNull: true]))
         
         var request = URLRequest(url: URL(string: "http://localhost:5000/registration")!)
         request.httpMethod = "POST"
         let postString = "first_name=\(first_name.text!)&last_name=\(last_name.text!)&email=\(email.text!)&password=\(password.text!)&confirm_password=\(confirm_password.text!)&phone=\(phone.text!)"
-        print (postString)
+//        print (postString)
         request.httpBody = postString.data(using: .utf8)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {                                                 // check for fundamental networking error
@@ -46,7 +36,7 @@ class RegistrationController: UIViewController {
             }
             
             let responseString = String(data: data, encoding: .utf8)
-            print("responseString = \(responseString)")
+//            print("responseString = \(responseString)")
         }
         task.resume()
     }

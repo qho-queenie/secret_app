@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dno-IL-CAo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dno-IL-CAo">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -78,10 +78,6 @@
                                 <rect key="frame" x="151" y="251" width="38" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Login"/>
-                                <connections>
-                                    <action selector="login_touch:" destination="HS8-uG-8GY" eventType="touchUpInside" id="mIn-8L-6OZ"/>
-                                    <segue destination="j2C-1O-xNh" kind="show" id="nRa-Z8-b5s"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -89,8 +85,9 @@
                     <navigationItem key="navigationItem" id="VwN-AX-H5n"/>
                     <connections>
                         <outlet property="email_login" destination="uhO-Ot-ovU" id="9AL-2o-PR5"/>
-                        <outlet property="login_button" destination="Mkg-hO-3nN" id="xg9-tO-TtP"/>
+                        <outlet property="loginButton" destination="Mkg-hO-3nN" id="BWu-Rq-Bai"/>
                         <outlet property="password_login" destination="y5K-yJ-dKI" id="O3t-zh-C7A"/>
+                        <segue destination="j2C-1O-xNh" kind="show" identifier="loginSegue" id="ot8-ku-sRz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cPB-KS-qdi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -522,7 +519,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CM1-Oj-1FR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1089" y="987"/>
+            <point key="canvasLocation" x="1089" y="949"/>
         </scene>
     </scenes>
 </document>
