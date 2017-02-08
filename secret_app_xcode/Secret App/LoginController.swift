@@ -8,15 +8,19 @@ class LoginController: UIViewController {
     @IBOutlet weak var email_login: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+    @IBAction func loginButtonPressed(_ sender: Any) {
+
         var request = URLRequest(url: URL(string: "http://localhost:5000/login")!)
         request.httpMethod = "POST"
         let postString = "email=\(email_login.text!)&password=\(password_login.text!)"
 //        print (postString)
         request.httpBody = postString.data(using: .utf8)
         
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+//        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+        let task = URLSession.shared.dataTask(with: request,
+                                    completionHandler: { (data, response, error) in
+            
+            
             guard let data = data, error == nil else {                                                 // check for fundamental networking error
                 print("error=\(error)")
                 return
@@ -37,14 +41,14 @@ class LoginController: UIViewController {
             let json = JSON(responseString)
             
             
-        }
+            DispatchQueue.main.async {
+                print("segue after HTTP response")
+                self.performSegue(withIdentifier: "LoginSegue", sender: self.loginButton)
+            }
+        })
         task.resume()
         
         
-    }
-    
-    func segueToNext(){
-        performSegue(withIdentifier: "loginSegue", sender: self)
     }
     
     override func viewDidLoad() {
