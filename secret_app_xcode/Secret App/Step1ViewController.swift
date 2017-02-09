@@ -29,7 +29,8 @@ class Step1ViewController: UIViewController {
             let responseString = String(data: data, encoding: .utf8)
             print("responseString = \(responseString)")
             
-            
+            let cookies = HTTPCookieStorage.shared.cookies(for: (response?.url!)!)
+            print("cookies:\(cookies)")
         
         }
         task.resume()

@@ -16,7 +16,6 @@ class LoginController: UIViewController {
 //        print (postString)
         request.httpBody = postString.data(using: .utf8)
         
-//        let task = URLSession.shared.dataTask(with: request) { data, response, error in
         let task = URLSession.shared.dataTask(with: request,
                                     completionHandler: { (data, response, error) in
             
@@ -40,9 +39,12 @@ class LoginController: UIViewController {
             
             let json = JSON(responseString)
             
+            let cookies = HTTPCookieStorage.shared.cookies(for: (response?.url!)!)
+            print("cookies:\(cookies)")
             
             DispatchQueue.main.async {
                 print("segue after HTTP response")
+                
                 self.performSegue(withIdentifier: "LoginSegue", sender: self.loginButton)
             }
         })
