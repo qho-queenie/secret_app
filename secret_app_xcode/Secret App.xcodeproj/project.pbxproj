@@ -19,6 +19,7 @@
 		4DD0BDD61E4805A400A80C40 /* Step1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD0BDD51E4805A400A80C40 /* Step1ViewController.swift */; };
 		4DD0BDD81E4805C800A80C40 /* Step2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD0BDD71E4805C800A80C40 /* Step2ViewController.swift */; };
 		4DD0BDDA1E4805DB00A80C40 /* Step3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD0BDD91E4805DB00A80C40 /* Step3ViewController.swift */; };
+		771051491E4C1CE30044BEAE /* httpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771051481E4C1CE30044BEAE /* httpRequest.swift */; };
 		7735872E1E48254700EED1BD /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7735872D1E48254700EED1BD /* SwiftyJSON.swift */; };
 		774D512E1E49730800E4D86A /* editTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774D512D1E49730800E4D86A /* editTasksViewController.swift */; };
 /* End PBXBuildFile section */
@@ -59,6 +60,7 @@
 		4DD0BDD51E4805A400A80C40 /* Step1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Step1ViewController.swift; sourceTree = "<group>"; };
 		4DD0BDD71E4805C800A80C40 /* Step2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Step2ViewController.swift; sourceTree = "<group>"; };
 		4DD0BDD91E4805DB00A80C40 /* Step3ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Step3ViewController.swift; sourceTree = "<group>"; };
+		771051481E4C1CE30044BEAE /* httpRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = httpRequest.swift; sourceTree = "<group>"; };
 		7735872D1E48254700EED1BD /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		774D512D1E49730800E4D86A /* editTasksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = editTasksViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -124,6 +126,7 @@
 				4D4F65301E42F1A2003518A8 /* LaunchScreen.storyboard */,
 				4D4F65331E42F1A2003518A8 /* Info.plist */,
 				4D4F652B1E42F1A2003518A8 /* Secret_App.xcdatamodeld */,
+				771051481E4C1CE30044BEAE /* httpRequest.swift */,
 			);
 			path = "Secret App";
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D4F652D1E42F1A2003518A8 /* Secret_App.xcdatamodeld in Sources */,
+				771051491E4C1CE30044BEAE /* httpRequest.swift in Sources */,
 				7735872E1E48254700EED1BD /* SwiftyJSON.swift in Sources */,
 				4DD0BDD81E4805C800A80C40 /* Step2ViewController.swift in Sources */,
 				4DD0BDDA1E4805DB00A80C40 /* Step3ViewController.swift in Sources */,
