@@ -120,10 +120,6 @@ class Step1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
             if let value = alert?.textFields![1].text{
                 textField_event_note = value
             }
-
-//            print("Ok pressed: \(textField_event_name?.text ?? "")")
-//            
-//            print("Ok pressed: \(textField_event_note?.text ?? "")")
             
             let url = URL(string: "http://localhost:5000/add_new_event")
             
