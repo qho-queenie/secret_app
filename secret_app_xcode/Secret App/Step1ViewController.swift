@@ -26,6 +26,11 @@ class Step1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         
         self.minuteEntryField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
+
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     func loadData(){
         let url = URL(string: "http://localhost:5000/display_events")

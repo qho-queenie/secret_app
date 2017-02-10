@@ -217,6 +217,7 @@
 				TargetAttributes = {
 					4D4F65201E42F1A2003518A8 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 8E8H925QR9;
 						ProvisioningStyle = Automatic;
 					};
 					4D4F65371E42F1A2003518A8 = {
@@ -444,6 +445,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 8E8H925QR9;
 				INFOPLIST_FILE = "Secret App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "SA.Secret-App";
@@ -456,6 +458,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 8E8H925QR9;
 				INFOPLIST_FILE = "Secret App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "SA.Secret-App";
