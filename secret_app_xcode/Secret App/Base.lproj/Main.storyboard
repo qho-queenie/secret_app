@@ -306,12 +306,16 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="+"/>
+                                <connections>
+                                    <action selector="add_event_func:" destination="D3h-ih-Vx7" eventType="touchUpInside" id="Mya-sx-lPE"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="bxx-n0-vmS"/>
                     <connections>
+                        <outlet property="add_event" destination="jvD-M9-oTx" id="Zus-tF-jV0"/>
                         <outlet property="eventPicker" destination="n0W-HK-hjh" id="0Vc-39-BmL"/>
                         <outlet property="remove_task" destination="wev-t3-YDj" id="qGy-3k-10h"/>
                     </connections>

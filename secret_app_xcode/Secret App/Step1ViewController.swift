@@ -3,6 +3,7 @@ import UIKit
 class Step1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
 
+    @IBOutlet weak var add_event: UIButton!
     @IBOutlet weak var remove_task: UIButton!
     var picker: [String] = [String]()
     var public_event_id : [Int] = [Int]()
@@ -92,7 +93,58 @@ class Step1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         loadData()
     }
     
+    @IBAction func add_event_func(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Add New Event", message: "Enter an event", preferredStyle: .alert)
+        
+        alert.addTextField { (textField_event_name) in
+            textField_event_name.text = "Enter new event name here"
+        }
+        
+        alert.addTextField { (textField_event_note) in
+            textField_event_note.text = "Enter event's note here(optional)"
+        }
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { [weak alert] (_) in
+        }))
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+//            let textField_event_name = alert?.textFields![0] // Force unwrapping because we know it exists.
+            
+            var textField_event_name = ""
+            var textField_event_note = ""
+            
+            if let value = alert?.textFields![0].text{
+                textField_event_name = value
+            }
+            
+            if let value = alert?.textFields![1].text{
+                textField_event_note = value
+            }
 
+//            print("Ok pressed: \(textField_event_name?.text ?? "")")
+//            
+//            print("Ok pressed: \(textField_event_note?.text ?? "")")
+            
+            let url = URL(string: "http://localhost:5000/add_new_event")
+            
+            var request = URLRequest(url: url!)
+            
+            request.httpMethod = "POST"
+            
+            let postString = "event_name=\(textField_event_name)&event_note=\(textField_event_note)"
+                    print (postString)
+            request.httpBody = postString.data(using: .utf8)
+            
+            HTTP.request(request: request, callback: self.post_new_event)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+
+
+    func post_new_event(data : JSON){
+        print (data)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
