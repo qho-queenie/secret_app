@@ -17,6 +17,7 @@ class Step1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     var picker: [String] = [String]()
     var public_event_id : [Int] = [Int]()
     @IBOutlet weak var eventPicker: UIPickerView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Step 1 View Controller")
@@ -28,10 +29,7 @@ class Step1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     }
 
 
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-    
+
     func loadData(){
         let url = URL(string: "http://localhost:5000/display_events")
         var request = URLRequest(url: url!)
@@ -135,8 +133,11 @@ class Step1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     //Text Field funcs:
     
     func textFieldDidChange(_ textField: UITextField) {
-        print(textField.text!)
+//        print(textField.text!)
+        TaskGlobalStorage.minutes = textField.text!
+        print (TaskGlobalStorage.minutes)
     }
+
     
     
     // Picker View funcs:
@@ -155,6 +156,8 @@ class Step1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         TaskGlobalStorage.task_name = picker[row]
         TaskGlobalStorage.task_id = public_event_id[row]
+        print (TaskGlobalStorage.task_name)
+        print(TaskGlobalStorage.task_id)
     }
     
 }
