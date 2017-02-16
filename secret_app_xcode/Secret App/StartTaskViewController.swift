@@ -5,6 +5,10 @@ class Step3ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Step 3 View Controller")
+        print (TaskGlobalStorage.emergency_contact_id)
+        print (TaskGlobalStorage.emergency_contact_name)
+        print (TaskGlobalStorage.emergency_contact_phone)
+        print (TaskGlobalStorage.user_first_name)
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -20,7 +24,7 @@ class Step3ViewController: UIViewController {
         print("emergency_contact_id: \(TaskGlobalStorage.emergency_contact_id)")
         print("emergency_contact_name: \(TaskGlobalStorage.emergency_contact_name)")
         
-        var request = URLRequest(url: URL(string: "http://localhost:5000/start_task")!)
+        var request = URLRequest(url: URL(string: "http://\(TaskGlobalStorage.ip_add)/start_task")!)
         request.httpMethod = "POST"
         let postString = "contact_name=\(TaskGlobalStorage.emergency_contact_name)&contact_phone=\(TaskGlobalStorage.emergency_contact_phone)&user_first_name=\(TaskGlobalStorage.user_first_name)&event_name=\(TaskGlobalStorage.task_name)&minutes=\(TaskGlobalStorage.minutes)"
         request.httpBody = postString.data(using: .utf8)

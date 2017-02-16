@@ -8,8 +8,8 @@ public class TaskGlobalStorage{
     public static var emergency_contact_name:String = ""
     public static var emergency_contact_phone:String = ""
     public static var user_first_name:String = ""
+    public static var ip_add = "54.193.124.182"
 }
-
 
 class Step1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -27,10 +27,8 @@ class Step1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         self.eventPicker.dataSource = self
     }
 
-
-
     func loadData(){
-        let url = URL(string: "http://localhost:5000/display_events")
+        let url = URL(string: "http://\(TaskGlobalStorage.ip_add)/display_events")
         var request = URLRequest(url: url!)
         request.httpMethod = "GET"
         HTTP.request(request: request, callback: loadDataCallback)
@@ -43,7 +41,11 @@ class Step1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         print("loadDataCallback")
         print(JSON_response)
         
-        TaskGlobalStorage.user_first_name = JSON_response["data"][0]["event_name"].string!
+        if let unwrapped = JSON_response["data"][0]["first_name"].string {
+            TaskGlobalStorage.user_first_name = unwrapped
+
+        }
+        
         
         for index in 0..<JSON_response["data"].count{
             var toAppend = JSON_response["data"][index]["event_name"]
@@ -66,7 +68,9 @@ class Step1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         print ("fuck")
         print (eventPicker.selectedRow(inComponent: 0))
         
-        let url = URL(string: "http://localhost:5000/delete_event?id=\(public_event_id[eventPicker.selectedRow(inComponent: 0)])")
+        
+        
+        let url = URL(string: "http://\(TaskGlobalStorage.ip_add)/delete_event?id=\(public_event_id[eventPicker.selectedRow(inComponent: 0)])")
         var request = URLRequest(url: url!)
         request.httpMethod = "GET"
         HTTP.request(request: request, callback: removeCallback)
@@ -107,7 +111,7 @@ class Step1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
                 textField_event_note = value
             }
             
-            let url = URL(string: "http://localhost:5000/add_new_event")
+            let url = URL(string: "http://\(TaskGlobalStorage.ip_add)/add_new_event")
             
             var request = URLRequest(url: url!)
             

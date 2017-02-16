@@ -20,7 +20,16 @@ class Step2ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 
     }
     @IBAction func remove_contact(_ sender: Any) {
-        //ADD THIS
+        print ("remove contact button hit")
+        print (contactPicker.selectedRow(inComponent: 0))
+        let url = URL(string: "http://\(TaskGlobalStorage.ip_add)/delete_contact?id=\(contact_id[contactPicker.selectedRow(inComponent: 0)])")
+        
+        var request = URLRequest(url: url!)
+        request.httpMethod = "GET"
+        HTTP.request(request: request, callback: removeCallback)
+    }
+    func removeCallback(data: JSON){
+        loadData()
     }
 
     @IBAction func add_contact_func(_ sender: Any) {
@@ -78,7 +87,7 @@ class Step2ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
             }
             
             
-            let url = URL(string: "http://localhost:5000/add_new_contact")
+            let url = URL(string: "http://\(TaskGlobalStorage.ip_add)/add_new_contact")
             
             var request = URLRequest(url: url!)
             
@@ -99,7 +108,7 @@ class Step2ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     }
 
 func loadData(){
-    let url = URL(string: "http://localhost:5000/display_contacts")
+    let url = URL(string: "http://\(TaskGlobalStorage.ip_add)/display_contacts")
     var request = URLRequest(url: url!)
     request.httpMethod = "GET"
     HTTP.request(request: request, callback: loadDataCallback)
@@ -111,6 +120,8 @@ func loadDataCallback(JSON_response: JSON){
     print("loadDataCallback")
     print(JSON_response)
     
+
+    
     for index in 0..<JSON_response["data"].count{
         var toAppend = "\(JSON_response["data"][index]["contact_first_name"].string!) \(JSON_response["data"][index]["contact_last_name"].string!)"
         var toAppendContactId = JSON_response["data"][index]["id"]
@@ -119,6 +130,10 @@ func loadDataCallback(JSON_response: JSON){
         self.contact_id.append(toAppendContactId.int!)
         self.contact_phone.append(toAppendContactPhone.string!)
     }
+    
+    TaskGlobalStorage.emergency_contact_name = self.picker[0]
+    TaskGlobalStorage.emergency_contact_id = contact_id[0]
+    TaskGlobalStorage.emergency_contact_phone = contact_phone[0]
     
     print("picker arr:")
     print(self.picker)

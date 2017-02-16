@@ -9,7 +9,7 @@ class SetTimeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Step 3 View Controller")
+        print("Set Time View Controller")
         // Do any additional setup after loading the view, typically from a nib.
     }
     

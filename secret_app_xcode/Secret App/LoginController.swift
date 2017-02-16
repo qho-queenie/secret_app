@@ -10,7 +10,7 @@ class LoginController: UIViewController {
     
     @IBAction func loginButtonPressed(_ sender: Any) {
 
-        var request = URLRequest(url: URL(string: "http://localhost:5000/login")!)
+        var request = URLRequest(url: URL(string: "http://\(TaskGlobalStorage.ip_add)/login")!)
         request.httpMethod = "POST"
         let postString = "email=\(email_login.text!)&password=\(password_login.text!)"
 //        print (postString)

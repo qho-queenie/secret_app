@@ -19,7 +19,7 @@ class RegistrationController: UIViewController {
     
     @IBAction func to_reg(_ sender: UIButton) {
         
-        var request = URLRequest(url: URL(string: "http://localhost:5000/registration")!)
+        var request = URLRequest(url: URL(string: "http://\(TaskGlobalStorage.ip_add)/registration")!)
         request.httpMethod = "POST"
         let postString = "first_name=\(first_name.text!)&last_name=\(last_name.text!)&email=\(email.text!)&password=\(password.text!)&confirm_password=\(confirm_password.text!)&phone=\(phone.text!)"
 //        print (postString)
