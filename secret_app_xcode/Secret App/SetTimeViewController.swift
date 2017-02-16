@@ -1,6 +1,11 @@
 import UIKit
 
-class Step3ViewController: UIViewController {
+class SetTimeViewController: UIViewController {
+
+    @IBAction func timeInputChange(_ sender: Any) {
+        print((sender as AnyObject).text!)
+        TaskGlobalStorage.minutes = (sender as AnyObject).text!
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

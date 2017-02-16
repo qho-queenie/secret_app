@@ -4,6 +4,7 @@ class Step2ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 
     var picker: [String] = [String]()
     var contact_id : [Int] = [Int]()
+    var contact_phone : [String] = [String]()
     @IBOutlet weak var add_contact: UIButton!
     @IBOutlet weak var contactPicker: UIPickerView!
     
@@ -18,28 +19,31 @@ class Step2ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         super.didReceiveMemoryWarning()
 
     }
+    @IBAction func remove_contact(_ sender: Any) {
+        //ADD THIS
+    }
 
     @IBAction func add_contact_func(_ sender: Any) {
         let alert = UIAlertController(title: "Add New Contact", message: "Enter your person", preferredStyle: .alert)
         
         alert.addTextField { (textField_contact_first_name) in
-            textField_contact_first_name.text = "Enter new contact person first name"
+            textField_contact_first_name.placeholder = "Enter new contact person first name"
         }
         
         alert.addTextField { (textField_contact_last_name) in
-            textField_contact_last_name.text = "Enter new contact person last name"
+            textField_contact_last_name.placeholder = "Enter new contact person last name"
         }
         
         alert.addTextField { (textField_relationship) in
-            textField_relationship.text = "Enter your relationship"
+            textField_relationship.placeholder = "Enter your relationship"
         }
         
         alert.addTextField { (textField_contact_phone) in
-            textField_contact_phone.text = "Enter your person's phone number"
+            textField_contact_phone.placeholder = "Enter your person's phone number"
         }
         
         alert.addTextField { (textField_contact_email) in
-            textField_contact_email.text = "Enter your person's email"
+            textField_contact_email.placeholder = "Enter your person's email"
         }
         
         
@@ -110,8 +114,10 @@ func loadDataCallback(JSON_response: JSON){
     for index in 0..<JSON_response["data"].count{
         var toAppend = "\(JSON_response["data"][index]["contact_first_name"].string!) \(JSON_response["data"][index]["contact_last_name"].string!)"
         var toAppendContactId = JSON_response["data"][index]["id"]
+        var toAppendContactPhone = JSON_response["data"][index]["contact_phone"]
         self.picker.append(toAppend)
         self.contact_id.append(toAppendContactId.int!)
+        self.contact_phone.append(toAppendContactPhone.string!)
     }
     
     print("picker arr:")
@@ -141,10 +147,12 @@ func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent c
 }
 
 func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-    TaskGlobalStorage.task_name = self.picker[row]
-    TaskGlobalStorage.task_id = contact_id[row]
-    print (TaskGlobalStorage.task_name)
-    print(TaskGlobalStorage.task_id)
+    TaskGlobalStorage.emergency_contact_name = self.picker[row]
+    TaskGlobalStorage.emergency_contact_id = contact_id[row]
+    TaskGlobalStorage.emergency_contact_phone = contact_phone[row]
+    print (TaskGlobalStorage.emergency_contact_name)
+    print(TaskGlobalStorage.emergency_contact_id)
+    print(TaskGlobalStorage.emergency_contact_phone)
     }
 }
 

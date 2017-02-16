@@ -6,12 +6,13 @@ public class TaskGlobalStorage{
     public static var task_name:String = ""
     public static var emergency_contact_id:Int = 0
     public static var emergency_contact_name:String = ""
+    public static var emergency_contact_phone:String = ""
+    public static var user_first_name:String = ""
 }
 
 
 class Step1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    @IBOutlet weak var minuteEntryField: UITextField!
     @IBOutlet weak var add_event: UIButton!
     @IBOutlet weak var remove_task: UIButton!
     var picker: [String] = [String]()
@@ -24,8 +25,6 @@ class Step1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 
         self.eventPicker.delegate = self
         self.eventPicker.dataSource = self
-        
-        self.minuteEntryField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
 
 
@@ -44,12 +43,16 @@ class Step1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         print("loadDataCallback")
         print(JSON_response)
         
+        TaskGlobalStorage.user_first_name = JSON_response["data"][0]["event_name"].string!
+        
         for index in 0..<JSON_response["data"].count{
             var toAppend = JSON_response["data"][index]["event_name"]
             var toAppendEventId = JSON_response["data"][index]["id"]
+            print("event:\(toAppend) id:\(toAppendEventId)")
             self.picker.append(toAppend.string!)
             self.public_event_id.append(toAppendEventId.int!)
         }
+        
         
         print("picker arr:")
         print(self.picker)
@@ -81,11 +84,11 @@ class Step1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         let alert = UIAlertController(title: "Add New Event", message: "Enter an event", preferredStyle: .alert)
         
         alert.addTextField { (textField_event_name) in
-            textField_event_name.text = "Enter new event name here"
+            textField_event_name.placeholder = "Enter new event name here"
         }
         
         alert.addTextField { (textField_event_note) in
-            textField_event_note.text = "Enter event's note here(optional)"
+            textField_event_note.placeholder = "Enter event's note here(optional)"
         }
         
         alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { [weak alert] (_) in
