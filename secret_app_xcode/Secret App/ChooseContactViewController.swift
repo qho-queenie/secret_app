@@ -4,6 +4,7 @@ class Step2ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 
     var picker: [String] = [String]()
     var contact_id : [Int] = [Int]()
+    var contact_status: [Int] = [Int]()
     var contact_phone : [String] = [String]()
     @IBOutlet weak var add_contact: UIButton!
     @IBOutlet weak var contactPicker: UIPickerView!
@@ -93,7 +94,7 @@ class Step2ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
             
             request.httpMethod = "POST"
             
-            let postString = "contact_first_name=\(textField_contact_first_name)&contact_last_name=\(textField_contact_last_name)&contact_relationship=\(textField_relationship)&contact_phone=\(textField_contact_phone)&contact_email=\(textField_contact_email)"
+            let postString = "contact_first_name=\(textField_contact_first_name)&contact_last_name=\(textField_contact_last_name)&contact_relationship=\(textField_relationship)&contact_phone=\(textField_contact_phone)&contact_email=\(textField_contact_email)&user_first_name=\(TaskGlobalStorage.user_first_name)"
             print (postString)
             request.httpBody = postString.data(using: .utf8)
             
@@ -126,9 +127,14 @@ func loadDataCallback(JSON_response: JSON){
         var toAppend = "\(JSON_response["data"][index]["contact_first_name"].string!) \(JSON_response["data"][index]["contact_last_name"].string!)"
         var toAppendContactId = JSON_response["data"][index]["id"]
         var toAppendContactPhone = JSON_response["data"][index]["contact_phone"]
-        self.picker.append(toAppend)
-        self.contact_id.append(toAppendContactId.int!)
-        self.contact_phone.append(toAppendContactPhone.string!)
+        var toAppendContactStatus = JSON_response["data"][index]["contact_status"]
+        
+        if (toAppendContactStatus == 1){
+            self.picker.append(toAppend)
+            self.contact_id.append(toAppendContactId.int!)
+            self.contact_phone.append(toAppendContactPhone.string!)
+            self.contact_status.append(toAppendContactStatus.int!)
+        }
     }
     
     TaskGlobalStorage.emergency_contact_name = self.picker[0]
