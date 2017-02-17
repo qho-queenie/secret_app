@@ -3,7 +3,7 @@ its a secret
 adsf
 
 #####Queenie Ho
-queeniehttpio.com  
+http://queenieio.com  
 https://www.linkedin.com/in/queenieho1/  
 
 #####Chris Rollins
