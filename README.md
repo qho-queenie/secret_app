@@ -1,6 +1,5 @@
 # secret_app xCode Components
 its a secret
-adsf
 
 #####Queenie Ho
 http://queenieio.com  
