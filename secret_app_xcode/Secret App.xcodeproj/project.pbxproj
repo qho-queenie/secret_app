@@ -23,6 +23,7 @@
 		771051491E4C1CE30044BEAE /* httpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771051481E4C1CE30044BEAE /* httpRequest.swift */; };
 		7735872E1E48254700EED1BD /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7735872D1E48254700EED1BD /* SwiftyJSON.swift */; };
 		774D512E1E49730800E4D86A /* editTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774D512D1E49730800E4D86A /* editTasksViewController.swift */; };
+		77CE13881E57A0EB0085D1FC /* contactsStatusTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CE13871E57A0EB0085D1FC /* contactsStatusTableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		771051481E4C1CE30044BEAE /* httpRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = httpRequest.swift; sourceTree = "<group>"; };
 		7735872D1E48254700EED1BD /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		774D512D1E49730800E4D86A /* editTasksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = editTasksViewController.swift; sourceTree = "<group>"; };
+		77CE13871E57A0EB0085D1FC /* contactsStatusTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = contactsStatusTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 				4D2DC97C1E55317F0073CAD6 /* SetTimeViewController.swift */,
 				774D512D1E49730800E4D86A /* editTasksViewController.swift */,
 				4DD0BDD71E4805C800A80C40 /* ChooseContactViewController.swift */,
+				77CE13871E57A0EB0085D1FC /* contactsStatusTableView.swift */,
 				4DD0BDD91E4805DB00A80C40 /* StartTaskViewController.swift */,
 				4DD0BD971E48040600A80C40 /* RegistrationController.swift */,
 				4D4F652E1E42F1A2003518A8 /* Assets.xcassets */,
@@ -293,6 +296,7 @@
 				7735872E1E48254700EED1BD /* SwiftyJSON.swift in Sources */,
 				4DD0BDD81E4805C800A80C40 /* ChooseContactViewController.swift in Sources */,
 				4DD0BDDA1E4805DB00A80C40 /* StartTaskViewController.swift in Sources */,
+				77CE13881E57A0EB0085D1FC /* contactsStatusTableView.swift in Sources */,
 				4D4F65271E42F1A2003518A8 /* LoginController.swift in Sources */,
 				4DD0BD981E48040600A80C40 /* RegistrationController.swift in Sources */,
 				774D512E1E49730800E4D86A /* editTasksViewController.swift in Sources */,
