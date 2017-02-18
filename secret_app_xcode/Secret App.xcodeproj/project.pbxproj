@@ -24,6 +24,7 @@
 		7735872E1E48254700EED1BD /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7735872D1E48254700EED1BD /* SwiftyJSON.swift */; };
 		774D512E1E49730800E4D86A /* editTasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 774D512D1E49730800E4D86A /* editTasksViewController.swift */; };
 		77CE13881E57A0EB0085D1FC /* contactsStatusTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CE13871E57A0EB0085D1FC /* contactsStatusTableView.swift */; };
+		77CE138E1E57D46A0085D1FC /* editProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CE138D1E57D46A0085D1FC /* editProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		7735872D1E48254700EED1BD /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		774D512D1E49730800E4D86A /* editTasksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = editTasksViewController.swift; sourceTree = "<group>"; };
 		77CE13871E57A0EB0085D1FC /* contactsStatusTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = contactsStatusTableView.swift; sourceTree = "<group>"; };
+		77CE138D1E57D46A0085D1FC /* editProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = editProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 				4DD0BDD51E4805A400A80C40 /* ChooseTaskViewController.swift */,
 				4D2DC97C1E55317F0073CAD6 /* SetTimeViewController.swift */,
 				774D512D1E49730800E4D86A /* editTasksViewController.swift */,
+				77CE138D1E57D46A0085D1FC /* editProfileViewController.swift */,
 				4DD0BDD71E4805C800A80C40 /* ChooseContactViewController.swift */,
 				77CE13871E57A0EB0085D1FC /* contactsStatusTableView.swift */,
 				4DD0BDD91E4805DB00A80C40 /* StartTaskViewController.swift */,
@@ -223,7 +226,7 @@
 				TargetAttributes = {
 					4D4F65201E42F1A2003518A8 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 77BBD53GGK;
+						DevelopmentTeam = 8E8H925QR9;
 						ProvisioningStyle = Automatic;
 					};
 					4D4F65371E42F1A2003518A8 = {
@@ -299,6 +302,7 @@
 				77CE13881E57A0EB0085D1FC /* contactsStatusTableView.swift in Sources */,
 				4D4F65271E42F1A2003518A8 /* LoginController.swift in Sources */,
 				4DD0BD981E48040600A80C40 /* RegistrationController.swift in Sources */,
+				77CE138E1E57D46A0085D1FC /* editProfileViewController.swift in Sources */,
 				774D512E1E49730800E4D86A /* editTasksViewController.swift in Sources */,
 				4DD0BDD61E4805A400A80C40 /* ChooseTaskViewController.swift in Sources */,
 				4D4F65251E42F1A2003518A8 /* AppDelegate.swift in Sources */,
@@ -453,7 +457,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 77BBD53GGK;
+				DEVELOPMENT_TEAM = 8E8H925QR9;
 				INFOPLIST_FILE = "Secret App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "SA.Secret-App";
@@ -466,7 +470,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 77BBD53GGK;
+				DEVELOPMENT_TEAM = 8E8H925QR9;
 				INFOPLIST_FILE = "Secret App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "SA.Secret-App";

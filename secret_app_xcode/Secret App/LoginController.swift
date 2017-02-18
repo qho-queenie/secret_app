@@ -4,6 +4,8 @@ import UIKit
 
 class LoginController: UIViewController {
 
+
+    @IBOutlet weak var validation: UILabel!
     @IBOutlet weak var password_login: UITextField!
     @IBOutlet weak var email_login: UITextField!
     @IBOutlet weak var loginButton: UIButton!
@@ -37,15 +39,25 @@ class LoginController: UIViewController {
             let responseString = String(data: data, encoding: .utf8)
             print("responseString = \(responseString)")
             
-            let json = JSON(responseString)
+            let json = JSON(data)
             
             let cookies = HTTPCookieStorage.shared.cookies(for: (response?.url!)!)
             print("cookies:\(cookies)")
             
             DispatchQueue.main.async {
                 print("segue after HTTP response")
+                print (json)
                 
-                self.performSegue(withIdentifier: "LoginSegue", sender: self.loginButton)
+                if (json["success"].bool! == true){
+                    self.performSegue(withIdentifier: "LoginSegue", sender: self.loginButton)
+                }
+                else {
+                    print ((json["validation_errors"][0].string)!)
+                    self.validation.text = " "
+                    for index in 0..<(json["validation_errors"].array)!.count {
+                        self.validation.text! += (json["validation_errors"][index].string)!
+                    }
+                }
             }
         })
         task.resume()
@@ -56,6 +68,12 @@ class LoginController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("login controller")
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+//        
+//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+//        
+//        view.addGestureRecognizer(tap)
 
     }
 
@@ -63,6 +81,27 @@ class LoginController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+//    func keyboardWillShow(notification: NSNotification) {
+//        
+//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+//            if self.view.frame.origin.y == 0{
+//                self.view.frame.origin.y -= keyboardSize.height
+//            }
+//        }
+//    }
+//    
+//    func keyboardWillHide(notification: NSNotification) {
+//        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+//            if self.view.frame.origin.y != 0{
+//                self.view.frame.origin.y += keyboardSize.height
+//            }
+//        }
+//    }
+//    
+//    func dismissKeyboard() {
+//        view.endEditing(true)
+//    }
 
 
 }

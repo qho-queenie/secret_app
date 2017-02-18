@@ -1,10 +1,23 @@
 import UIKit
 
 class Step3ViewController: UIViewController {
+    var stopCountDown = false;
+    @IBOutlet weak var stopButton: UIButton!
+    @IBAction func stopCount(_ sender: Any) {
+        let url = URL(string: "http://\(TaskGlobalStorage.ip_add)/end_current_task")
+        var request = URLRequest(url: url!)
+        request.httpMethod = "GET"
+        HTTP.request(request: request, callback: endCountDownCallback)
+    }
     
+    func endCountDownCallback(data:JSON){
+        self.stopCountDown = true;
+    }
+    @IBOutlet weak var editProfile: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Step 3 View Controller")
+        self.editProfile.setTitle(TaskGlobalStorage.user_first_name, for: .normal)
         print (TaskGlobalStorage.emergency_contact_id)
         print (TaskGlobalStorage.emergency_contact_name)
         print (TaskGlobalStorage.emergency_contact_phone)
@@ -30,12 +43,15 @@ class Step3ViewController: UIViewController {
         request.httpBody = postString.data(using: .utf8)
         HTTP.request(request: request, callback: timerReqCallback)
         
+        self.stopButton.isHidden = false;
+        
     }
     @IBOutlet weak var timerLabel: UILabel!
     
     func timerReqCallback(data: JSON){
         print(Int(TaskGlobalStorage.minutes)!*60)
         timerCount(totalSeconds: Int(TaskGlobalStorage.minutes)!*60 )
+        self.stopCountDown = false;
     }
     
     func timerCount(totalSeconds: Int){
@@ -64,7 +80,7 @@ class Step3ViewController: UIViewController {
             print(timeMinuteString + ":" + timeSecondString)
             self.timerLabel.text! = timeMinuteString + ":" + timeSecondString
             
-            if(totalSeconds > 1){
+            if(totalSeconds > 1 && self.stopCountDown == false){
                 total = total - 1
                 self.timerCount(totalSeconds: total)
             }

@@ -8,10 +8,15 @@ public class TaskGlobalStorage{
     public static var emergency_contact_name:String = ""
     public static var emergency_contact_phone:String = ""
     public static var user_first_name:String = ""
+    public static var user_last_name:String = ""
+    public static var user_email:String = ""
+    public static var user_number:String = ""
     public static var ip_add = "54.193.124.182"
+    
 }
 
 class Step1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    @IBOutlet weak var editProfile: UIButton!
     
     @IBOutlet weak var add_event: UIButton!
     @IBOutlet weak var remove_task: UIButton!
@@ -43,9 +48,17 @@ class Step1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         
         if let unwrapped = JSON_response["data"][0]["first_name"].string {
             TaskGlobalStorage.user_first_name = unwrapped
-
         }
         
+        if let unwrapped = JSON_response["data"][0]["last_name"].string {
+            TaskGlobalStorage.user_last_name = unwrapped
+        }
+        if let unwrapped = JSON_response["data"][0]["email"].string {
+            TaskGlobalStorage.user_email = unwrapped
+        }
+        if let unwrapped = JSON_response["data"][0]["phone"].string {
+            TaskGlobalStorage.user_number = unwrapped
+        }
         
         for index in 0..<JSON_response["data"].count{
             var toAppend = JSON_response["data"][index]["event_name"]
@@ -61,6 +74,7 @@ class Step1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         
         DispatchQueue.main.async {
             self.eventPicker.reloadAllComponents()
+            self.editProfile.setTitle(TaskGlobalStorage.user_first_name, for: .normal)
         }
     }
 

@@ -2,6 +2,7 @@ import UIKit
 
 class Step2ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
 
+    @IBOutlet weak var editProfile: UIButton!
     var picker: [String] = [String]()
     var contact_id : [Int] = [Int]()
     var contact_status: [Int] = [Int]()
@@ -14,6 +15,7 @@ class Step2ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         self.contactPicker.delegate = self
         self.contactPicker.dataSource = self
         print("Step 2 View Controller")
+        self.editProfile.setTitle(TaskGlobalStorage.user_first_name, for: .normal)
     }
     
     override func didReceiveMemoryWarning() {
