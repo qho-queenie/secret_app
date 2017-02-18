@@ -94,6 +94,9 @@
                                 <rect key="frame" x="113" y="485" width="149" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Forgot password?"/>
+                                <connections>
+                                    <action selector="forgotPasswordButton:" destination="HS8-uG-8GY" eventType="touchUpInside" id="4xp-zb-OZv"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -117,6 +120,7 @@
                     <navigationItem key="navigationItem" id="VwN-AX-H5n"/>
                     <connections>
                         <outlet property="email_login" destination="uhO-Ot-ovU" id="9AL-2o-PR5"/>
+                        <outlet property="forgotPassword" destination="1s7-h6-nt3" id="Mbh-Lo-S1A"/>
                         <outlet property="loginButton" destination="Mkg-hO-3nN" id="BWu-Rq-Bai"/>
                         <outlet property="password_login" destination="y5K-yJ-dKI" id="O3t-zh-C7A"/>
                         <outlet property="validation" destination="Lds-bK-hk6" id="6BX-1f-z3K"/>
@@ -393,7 +397,7 @@
                                         <rect key="frame" x="0.0" y="28" width="261" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z3J-9d-scd" id="Wzt-EV-0Rg">
-                                            <rect key="frame" x="0.0" y="0.0" width="261" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="261" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>

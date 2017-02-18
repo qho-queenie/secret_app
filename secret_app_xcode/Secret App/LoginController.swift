@@ -9,11 +9,12 @@ class LoginController: UIViewController {
     @IBOutlet weak var password_login: UITextField!
     @IBOutlet weak var email_login: UITextField!
     @IBOutlet weak var loginButton: UIButton!
-    
+    @IBOutlet weak var forgotPassword: UIButton!
     @IBAction func loginButtonPressed(_ sender: Any) {
 
         var request = URLRequest(url: URL(string: "http://\(TaskGlobalStorage.ip_add)/login")!)
         request.httpMethod = "POST"
+        print (request)
         let postString = "email=\(email_login.text!)&password=\(password_login.text!)"
 //        print (postString)
         request.httpBody = postString.data(using: .utf8)
@@ -63,6 +64,45 @@ class LoginController: UIViewController {
         task.resume()
         
         
+    }
+    
+    @IBAction func forgotPasswordButton(_ sender: Any) {
+        
+        let alert = UIAlertController(title: "Forgot Password", message: "Enter your email to retrieve your password", preferredStyle: .alert)
+        
+        alert.addTextField { (textField_retrieve_email) in
+            textField_retrieve_email.placeholder = "Enter your email"
+        }
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { [weak alert] (_) in
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Send Request", style: .default, handler: { [weak alert] (_) in
+            
+            var textField_retrieve_email : String = ""
+            
+            if let value = alert?.textFields![0].text{
+                textField_retrieve_email = value
+            }
+            
+            print ("fuck")
+            
+            let url = URL(string: "http://\(TaskGlobalStorage.ip_add)/retrieve_password")
+            var request = URLRequest(url: url!)
+            request.httpMethod = "POST"
+
+            let postString = "email=\(textField_retrieve_email)"
+            request.httpBody = postString.data(using: .utf8)
+            print ("fuck")
+            print (postString)
+            HTTP.request(request: request, callback: self.post_retrieve_password)
+
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+
+    func post_retrieve_password(data: JSON){
+        print("haha")
     }
     
     override func viewDidLoad() {

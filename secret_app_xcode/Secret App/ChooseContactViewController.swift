@@ -163,6 +163,8 @@ func numberOfComponents(in pickerView: UIPickerView) -> Int {
 
 func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
     return self.picker.count
+    print ("fuck")
+    print (self.picker.count)
 }
 
 func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {

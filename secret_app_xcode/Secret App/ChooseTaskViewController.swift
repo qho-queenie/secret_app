@@ -11,7 +11,7 @@ public class TaskGlobalStorage{
     public static var user_last_name:String = ""
     public static var user_email:String = ""
     public static var user_number:String = ""
-    public static var ip_add = "54.193.124.182"
+    public static var ip_add = "localhost:5000"
     
 }
 
@@ -126,6 +126,7 @@ class Step1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
             }
             
             let url = URL(string: "http://\(TaskGlobalStorage.ip_add)/add_new_event")
+            
             
             var request = URLRequest(url: url!)
             
