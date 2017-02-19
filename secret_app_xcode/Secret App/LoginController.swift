@@ -114,16 +114,6 @@ class LoginController: UIViewController {
         }
     }
     
-    
-    
-//    print ((json["validation_errors"][0].string)!)
-//    self.validation.text = " "
-//    for index in 0..<(json["validation_errors"].array)!.count {
-//    self.validation.text! += (json["validation_errors"][index].string)!
-//    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("login controller")
