@@ -5,6 +5,7 @@ import UIKit
 class LoginController: UIViewController {
 
 
+    @IBOutlet weak var no_record: UILabel!
     @IBOutlet weak var validation: UILabel!
     @IBOutlet weak var password_login: UITextField!
     @IBOutlet weak var email_login: UITextField!
@@ -102,8 +103,26 @@ class LoginController: UIViewController {
     }
 
     func post_retrieve_password(data: JSON){
-        print("haha")
+        print(data["validation_errors"])
+        self.no_record.text = ""
+        
+        for index in 0..<data["validation_errors"].count{
+            let toAppend = data["validation_errors"][index]
+            print("the error is:\(toAppend)")
+            self.no_record.text! += (toAppend.string)!
+//            self.no_record.text = "hi "
+        }
     }
+    
+    
+    
+//    print ((json["validation_errors"][0].string)!)
+//    self.validation.text = " "
+//    for index in 0..<(json["validation_errors"].array)!.count {
+//    self.validation.text! += (json["validation_errors"][index].string)!
+//    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
