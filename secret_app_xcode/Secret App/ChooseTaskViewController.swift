@@ -11,7 +11,7 @@ public class TaskGlobalStorage{
     public static var user_last_name:String = ""
     public static var user_email:String = ""
     public static var user_number:String = ""
-    public static var ip_add = "localhost:5000"
+    public static var ip_add = "54.193.124.182"
     
 }
 
