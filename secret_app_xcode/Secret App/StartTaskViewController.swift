@@ -2,6 +2,7 @@ import UIKit
 
 class Step3ViewController: UIViewController {
     var stopCountDown = false;
+    @IBOutlet weak var additional_message: UITextField!
     @IBOutlet weak var stopButton: UIButton!
     @IBAction func stopCount(_ sender: Any) {
         let url = URL(string: "http://\(TaskGlobalStorage.ip_add)/end_current_task")
@@ -36,10 +37,14 @@ class Step3ViewController: UIViewController {
         print("task_name: \(TaskGlobalStorage.task_name)")
         print("emergency_contact_id: \(TaskGlobalStorage.emergency_contact_id)")
         print("emergency_contact_name: \(TaskGlobalStorage.emergency_contact_name)")
+        print ("additional message is: ")
+        print (additional_message.text!)
+        
         
         var request = URLRequest(url: URL(string: "http://\(TaskGlobalStorage.ip_add)/start_task")!)
         request.httpMethod = "POST"
-        let postString = "contact_name=\(TaskGlobalStorage.emergency_contact_name)&contact_phone=\(TaskGlobalStorage.emergency_contact_phone)&user_first_name=\(TaskGlobalStorage.user_first_name)&event_name=\(TaskGlobalStorage.task_name)&minutes=\(TaskGlobalStorage.minutes)"
+        let postString = "contact_name=\(TaskGlobalStorage.emergency_contact_name)&contact_phone=\(TaskGlobalStorage.emergency_contact_phone)&user_first_name=\(TaskGlobalStorage.user_first_name)&event_name=\(TaskGlobalStorage.task_name)&minutes=\(TaskGlobalStorage.minutes)&additional_message=\(additional_message.text!)"
+        print (postString)
         request.httpBody = postString.data(using: .utf8)
         HTTP.request(request: request, callback: timerReqCallback)
         

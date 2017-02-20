@@ -31,7 +31,6 @@ class LoginController: UIViewController {
             
             var httpResponse: HTTPURLResponse = response as! HTTPURLResponse
             
-            // Since the incoming cookies will be stored in one of the header fields in the HTTP Response, parse through the header fields to find the cookie field and save the data
 
             if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
                 print("statusCode should be 200, but is \(httpStatus.statusCode)")
@@ -109,8 +108,14 @@ class LoginController: UIViewController {
         for index in 0..<data["validation_errors"].count{
             let toAppend = data["validation_errors"][index]
             print("the error is:\(toAppend)")
-            self.no_record.text! += (toAppend.string)!
-//            self.no_record.text = "hi "
+            if (toAppend == "Please check your email."){
+                self.no_record.text! += (toAppend.string)!
+                    no_record.textColor = UIColor.green
+            }
+            else {
+                self.no_record.text! += (toAppend.string)!
+            }
+            
         }
     }
     
