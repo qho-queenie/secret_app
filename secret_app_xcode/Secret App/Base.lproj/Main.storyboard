@@ -387,7 +387,7 @@
         <!--Contacts Status Table View-->
         <scene sceneID="5bK-1A-xoI">
             <objects>
-                <viewController id="KIS-yg-Nc5" customClass="contactsStatusTableView" sceneMemberID="viewController">
+                <viewController id="KIS-yg-Nc5" customClass="contactsStatusTableView" customModule="Secret_App" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3uW-ow-NXW"/>
                         <viewControllerLayoutGuide type="bottom" id="ea8-eb-YcA"/>
@@ -396,31 +396,53 @@
                         <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your Contacts' Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oc7-M6-sBK">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Contacts' Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oc7-M6-sBK">
                                 <rect key="frame" x="90" y="55" width="225" height="24"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Lvv-mH-Bgi">
-                                <rect key="frame" x="72" y="124" width="261" height="467"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Lvv-mH-Bgi">
+                                <rect key="frame" x="78" y="184" width="261" height="370"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Z3J-9d-scd">
-                                        <rect key="frame" x="0.0" y="28" width="261" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z3J-9d-scd" id="Wzt-EV-0Rg">
-                                            <rect key="frame" x="0.0" y="0.0" width="261" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="370" id="jq8-i9-HpM"/>
+                                </constraints>
                             </tableView>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyCell" translatesAutoresizingMaskIntoConstraints="NO" id="Z3J-9d-scd">
+                                <rect key="frame" x="66" y="15" width="261" height="44"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z3J-9d-scd" id="Wzt-EV-0Rg">
+                                    <rect key="frame" x="0.0" y="0.0" width="261" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qz5-mv-S86">
+                                <rect key="frame" x="78" y="104" width="261" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Lvv-mH-Bgi" firstAttribute="leading" secondItem="qz5-mv-S86" secondAttribute="leading" id="1Qe-iC-PV6"/>
+                            <constraint firstItem="ea8-eb-YcA" firstAttribute="top" secondItem="Lvv-mH-Bgi" secondAttribute="bottom" id="4sU-lk-5CS"/>
+                            <constraint firstItem="Lvv-mH-Bgi" firstAttribute="top" secondItem="qz5-mv-S86" secondAttribute="bottom" constant="59" id="80t-TF-z8R"/>
+                            <constraint firstItem="qz5-mv-S86" firstAttribute="leading" secondItem="NQU-zm-XNu" secondAttribute="leadingMargin" constant="62" id="L1v-cQ-6oE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Lvv-mH-Bgi" secondAttribute="trailing" constant="20" id="Ml9-QM-NNt"/>
+                            <constraint firstItem="qz5-mv-S86" firstAttribute="top" secondItem="Oc7-M6-sBK" secondAttribute="bottom" constant="25" id="Ql5-w8-Ac7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qz5-mv-S86" secondAttribute="trailing" constant="20" id="U3F-1h-vGy"/>
+                            <constraint firstItem="Oc7-M6-sBK" firstAttribute="leading" secondItem="NQU-zm-XNu" secondAttribute="leadingMargin" constant="74" id="WfS-pC-J4q"/>
+                            <constraint firstItem="Lvv-mH-Bgi" firstAttribute="top" secondItem="qz5-mv-S86" secondAttribute="bottom" constant="59" id="fOA-gC-d7v"/>
+                            <constraint firstItem="Lvv-mH-Bgi" firstAttribute="trailing" secondItem="qz5-mv-S86" secondAttribute="trailing" id="joz-aF-YCz"/>
+                            <constraint firstItem="Oc7-M6-sBK" firstAttribute="top" secondItem="Z3J-9d-scd" secondAttribute="bottom" constant="11" id="l5A-vT-dVv"/>
+                            <constraint firstItem="Lvv-mH-Bgi" firstAttribute="leading" secondItem="NQU-zm-XNu" secondAttribute="leadingMargin" constant="62" id="sr2-4c-wx9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Oc7-M6-sBK" secondAttribute="trailing" constant="44" id="vfh-9W-Kf8"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="contact_status_table" destination="Lvv-mH-Bgi" id="IX6-gN-kun"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="REj-8W-XgZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
