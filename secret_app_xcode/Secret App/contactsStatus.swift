@@ -10,12 +10,20 @@ import Foundation
 import UIKit
 
 
+class cellClass: UITableViewCell {
+    @IBOutlet weak var first: UILabel!
+
+    @IBOutlet weak var email: UILabel!
+    @IBOutlet weak var status: UILabel!
+}
 
 class contactsStatusTableView: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
     @IBOutlet weak var displayCell: UILabel!
     
-    var forDisplay : [String] = [String]()
+    var display_first : [String] = [String]()
+    var display_email : [String] = [String]()
+    var display_status : [String] = [String]()
     
 
     @IBOutlet weak var contact_status_table: UITableView!
@@ -26,7 +34,7 @@ class contactsStatusTableView: UIViewController, UITableViewDataSource, UITableV
         contact_status_table.delegate = self
         contact_status_table.dataSource = self
         
-        self.contact_status_table.register(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
+//        self.contact_status_table.register(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
 
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -44,26 +52,44 @@ class contactsStatusTableView: UIViewController, UITableViewDataSource, UITableV
         print("loadDataCallback")
         print(JSON_response)
         
-        if let unwrapped = JSON_response["data"][0]["first_name"].string {
-        }
-        if let unwrapped = JSON_response["data"][0]["email"].string {
-        }
-        if let unwrapped = JSON_response["data"][0]["phone"].string {
-        }
-        
+
         DispatchQueue.main.async {
 
+            
             for index in 0..<JSON_response["data"].count{
-                var first_name = JSON_response["data"][index]["contact_first_name"].string ?? ""
-                var email = JSON_response["data"][index]["contact_email"].string ?? ""
-                var phone = JSON_response["data"][index]["contact_phone"].string ?? ""
+                print ("hello")
+//                print (JSON_response["data"][index]["contact_phone"].int!)
                 
-                var all = first_name + email + phone
+                var first_name = JSON_response["data"][index]["contact_first_name"].string ?? "" + " "
+
+                var email = JSON_response["data"][index]["contact_phone"].string ?? "" + " "
+
+
+//                var phone = JSON_response["data"][index]["contact_phone"].string ?? ""
                 
+                var statuses = JSON_response["data"][index]["contact_status"].int ?? 0
+                var stat = " "
+
+                if (statuses == 0){
+                    stat = "pending"
+                }
+                else if (statuses == 1){
+                    stat = "accepted"
+                }
+                else if (statuses == 2){
+                    stat = "declined"
+                }
+                print ("aaaaa")
+                print (statuses)
                 
+                var all = "\(first_name)  \(email)  \(stat)"
+                print ("hello")
+
                 print("contact's everything:\(all)")
-                
-                self.forDisplay.append(all)
+
+                self.display_first.append(first_name)
+                self.display_email.append(email)
+                self.display_status.append(stat)
             }
             self.contact_status_table.reloadData()
         }
@@ -76,18 +102,20 @@ class contactsStatusTableView: UIViewController, UITableViewDataSource, UITableV
     
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print ("number of rows")
-        if (forDisplay.count == 0){
+        if (display_first.count == 0){
             print ("0")
         }
-        return forDisplay.count
+        return display_first.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell  {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell")! as! cellClass
         
-        cell.textLabel?.text = self.forDisplay[indexPath.row]
+        cell.first?.text = self.display_first[indexPath.row]
+        cell.email?.text = self.display_email[indexPath.row]
+        cell.status?.text = self.display_status[indexPath.row]
         print ("bitch")
-        print (forDisplay[indexPath.row])
+
         
         return cell
     }

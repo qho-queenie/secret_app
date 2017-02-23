@@ -2,6 +2,7 @@ import UIKit
 
 class Step2ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
 
+    @IBOutlet weak var valid: UILabel!
     @IBOutlet weak var editProfile: UIButton!
     var picker: [String] = [String]()
     var contact_id : [Int] = [Int]()
@@ -107,6 +108,16 @@ class Step2ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 
     }
     func post_new_contact(data : JSON){
+        print (data)
+        DispatchQueue.main.async {
+            for i in 0..<(data["validation_errors"].array)!.count{
+            self.valid.text! += (data["validation_errors"][i].string)! + "\n"
+            }
+        }
+        
+
+        
+        
         loadData()
     }
 
@@ -126,13 +137,15 @@ func loadDataCallback(JSON_response: JSON){
 
     
     for index in 0..<JSON_response["data"].count{
-        var toAppend = "\(JSON_response["data"][index]["contact_first_name"].string!) \(JSON_response["data"][index]["contact_last_name"].string!)"
+        var toAppend = JSON_response["data"][index]["contact_first_name"]
+        var toAppend2 = JSON_response["data"][index]["contact_last_name"]
         var toAppendContactId = JSON_response["data"][index]["id"]
         var toAppendContactPhone = JSON_response["data"][index]["contact_phone"]
         var toAppendContactStatus = JSON_response["data"][index]["contact_status"]
         
         if (toAppendContactStatus == 1){
-            self.picker.append(toAppend)
+            self.picker.append(toAppend.string!)
+            self.picker.append(toAppend2.string!)
             self.contact_id.append(toAppendContactId.int!)
             self.contact_phone.append(toAppendContactPhone.string!)
             self.contact_status.append(toAppendContactStatus.int!)

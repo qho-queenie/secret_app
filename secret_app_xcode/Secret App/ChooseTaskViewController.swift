@@ -18,6 +18,7 @@ public class TaskGlobalStorage{
 class Step1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     @IBOutlet weak var editProfile: UIButton!
     
+    @IBOutlet weak var valid: UILabel!
     @IBOutlet weak var add_event: UIButton!
     @IBOutlet weak var remove_task: UIButton!
     var picker: [String] = [String]()
@@ -144,6 +145,10 @@ class Step1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 
 
     func post_new_event(data : JSON){
+        DispatchQueue.main.async {
+        print (data)
+                self.valid.text! = (data["validation_error"].string)!
+            }
         loadData()
     }
     
