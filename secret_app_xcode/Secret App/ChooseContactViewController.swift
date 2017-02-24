@@ -110,14 +110,18 @@ class Step2ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     func post_new_contact(data : JSON){
         print (data)
         DispatchQueue.main.async {
+            print ("bitch ass")
+            print (data["success"])
+            if (data["success"] == true){
+                print ("nth")
+            }
+            else {
+            self.valid.text = " "
             for i in 0..<(data["validation_errors"].array)!.count{
             self.valid.text! += (data["validation_errors"][i].string)! + "\n"
             }
         }
-        
-
-        
-        
+        }
         loadData()
     }
 
