@@ -2,6 +2,7 @@ import UIKit
 
 class RegistrationController: UIViewController {
     
+    @IBOutlet weak var validation: UILabel!
     @IBOutlet weak var reg_button: UIButton!
     
     @IBOutlet weak var first_name: UITextField!
@@ -35,10 +36,25 @@ class RegistrationController: UIViewController {
                 print("response = \(response)")
             }
             
-            let responseString = String(data: data, encoding: .utf8)
-//            print("responseString = \(responseString)")
+            DispatchQueue.main.async {
+            var jsonString = JSON(data);
+            if (jsonString["success"].bool! == true){
+                self.performSegue(withIdentifier: "RegSegue", sender: self.reg_button)
+            }
+            else {
+                print ((jsonString["validation_errors"][0].string)!)
+                self.validation.text = " "
+                for index in 0..<(jsonString["validation_errors"].array)!.count {
+                    self.validation.text! += (jsonString["validation_errors"][index].string)!
+                }
+            }
+            }
         }
         task.resume()
+    }
+    
+    @IBAction func register_clicked(_ sender: Any) {
+        
     }
 
     override func didReceiveMemoryWarning() {
