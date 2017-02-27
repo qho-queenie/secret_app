@@ -114,6 +114,7 @@ class Step2ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
             print (data["success"])
             if (data["success"] == true){
                 print ("nth")
+                self.valid.text = ""
             }
             else {
             self.valid.text = " "
@@ -148,8 +149,8 @@ func loadDataCallback(JSON_response: JSON){
         var toAppendContactStatus = JSON_response["data"][index]["contact_status"]
         
         if (toAppendContactStatus == 1){
-            self.picker.append(toAppend.string!)
-            self.picker.append(toAppend2.string!)
+            self.picker.append(toAppend.string! + " " + toAppend2.string!)
+//            self.picker.append()
             self.contact_id.append(toAppendContactId.int!)
             self.contact_phone.append(toAppendContactPhone.string!)
             self.contact_status.append(toAppendContactStatus.int!)
