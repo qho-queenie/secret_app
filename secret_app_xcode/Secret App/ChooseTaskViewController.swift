@@ -142,16 +142,24 @@ class Step1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         
         self.present(alert, animated: true, completion: nil)
     }
-
-
+    
     func post_new_event(data : JSON){
-        DispatchQueue.main.async {
         print (data)
-                self.valid.text! = (data["validation_error"].string)!
+        DispatchQueue.main.async {
+            print ("bitch ass")
+            print (data["success"])
+            if (data["success"] == true){
+                print ("nth")
+                self.valid.text = ""
             }
+            else {
+                    self.valid.text! = (data["validation_errors"].string)!
+                }
+        }
         loadData()
     }
-    
+
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
