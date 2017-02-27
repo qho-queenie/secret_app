@@ -139,7 +139,8 @@ func loadDataCallback(JSON_response: JSON){
     print("loadDataCallback")
     print(JSON_response)
     
-
+    
+    print(JSON_response["data"].count)
     
     for index in 0..<JSON_response["data"].count{
         var toAppend = JSON_response["data"][index]["contact_first_name"]
@@ -157,9 +158,11 @@ func loadDataCallback(JSON_response: JSON){
         }
     }
     
-    TaskGlobalStorage.emergency_contact_name = self.picker[0]
-    TaskGlobalStorage.emergency_contact_id = contact_id[0]
-    TaskGlobalStorage.emergency_contact_phone = contact_phone[0]
+    if(JSON_response["data"].count > 0){
+        TaskGlobalStorage.emergency_contact_name = self.picker[0]
+        TaskGlobalStorage.emergency_contact_id = contact_id[0]
+        TaskGlobalStorage.emergency_contact_phone = contact_phone[0]
+    }
     
     print("picker arr:")
     print(self.picker)
