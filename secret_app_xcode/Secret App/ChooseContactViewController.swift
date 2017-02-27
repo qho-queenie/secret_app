@@ -158,7 +158,7 @@ func loadDataCallback(JSON_response: JSON){
         }
     }
     
-    if(JSON_response["data"].count > 0){
+    if(self.picker.count > 0){
         TaskGlobalStorage.emergency_contact_name = self.picker[0]
         TaskGlobalStorage.emergency_contact_id = contact_id[0]
         TaskGlobalStorage.emergency_contact_phone = contact_phone[0]
