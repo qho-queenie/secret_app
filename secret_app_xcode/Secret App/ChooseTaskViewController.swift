@@ -150,7 +150,7 @@ class Step1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
             print (data["success"])
             if (data["success"] == true){
                 print ("nth")
-                self.valid.text = ""
+                self.valid.text = " "
             }
             else {
                     self.valid.text! = (data["validation_errors"].string)!
