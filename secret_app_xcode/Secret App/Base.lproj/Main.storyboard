@@ -14,7 +14,7 @@
         <scene sceneID="NRi-IM-mvY">
             <objects>
                 <navigationController id="dno-IL-CAo" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="BXN-TD-sRo">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BXN-TD-sRo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -771,7 +771,7 @@
                         <outlet property="phone" destination="RLQ-tS-GD1" id="z8d-jV-rfJ"/>
                         <outlet property="reg_button" destination="66v-zJ-qdJ" id="wMm-a4-aML"/>
                         <outlet property="validation" destination="lVw-oE-lce" id="BUu-Wn-w31"/>
-                        <segue destination="D3h-ih-Vx7" kind="show" identifier="RegSegue" id="1ru-9l-SzJ"/>
+                        <segue destination="j2C-1O-xNh" kind="show" identifier="regSegue" id="Kve-4o-Ra7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OIu-7T-v86" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -939,6 +939,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="qdc-pT-QXx"/>
-        <segue reference="1ru-9l-SzJ"/>
+        <segue reference="Kve-4o-Ra7"/>
     </inferredMetricsTieBreakers>
 </document>

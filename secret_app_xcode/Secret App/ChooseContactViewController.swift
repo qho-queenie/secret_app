@@ -135,11 +135,12 @@ func loadData(){
 
 func loadDataCallback(JSON_response: JSON){
     self.picker = []
+    self.contact_id = []
+    self.contact_status = []
+    self.contact_phone = []
     
     print("loadDataCallback")
     print(JSON_response)
-    
-    
     print(JSON_response["data"].count)
     
     for index in 0..<JSON_response["data"].count{

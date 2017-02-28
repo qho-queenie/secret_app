@@ -39,7 +39,7 @@ class RegistrationController: UIViewController {
             DispatchQueue.main.async {
             var jsonString = JSON(data);
             if (jsonString["success"].bool! == true){
-                self.performSegue(withIdentifier: "RegSegue", sender: self.reg_button)
+                self.performSegue(withIdentifier: "regSegue", sender: self.reg_button)
             }
             else {
                 print ((jsonString["validation_errors"][0].string)!)
