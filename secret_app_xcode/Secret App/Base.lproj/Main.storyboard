@@ -14,7 +14,7 @@
         <scene sceneID="NRi-IM-mvY">
             <objects>
                 <navigationController id="dno-IL-CAo" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BXN-TD-sRo">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="BXN-TD-sRo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -146,7 +146,7 @@
             </objects>
             <point key="canvasLocation" x="341.60000000000002" y="168.6656671664168"/>
         </scene>
-        <!--Item 2-->
+        <!--Choose Contact-->
         <scene sceneID="cUz-zv-4xS">
             <objects>
                 <viewController id="O5b-mr-9cp" customClass="Step2ViewController" customModule="Secret_App" customModuleProvider="target" sceneMemberID="viewController">
@@ -189,15 +189,6 @@
                                     <action selector="remove_contact:" destination="O5b-mr-9cp" eventType="touchUpInside" id="1bw-gf-GP1"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4X3-Sn-vlR">
-                                <rect key="frame" x="100" y="432" width="146" height="91"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="146" id="3xW-ec-mhv"/>
-                                    <constraint firstAttribute="height" constant="91" id="h68-US-Dir"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <state key="normal" title="Next"/>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select your emergency contact for this task:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TSv-kb-HBr">
                                 <rect key="frame" x="16" y="131" width="255" height="65"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -220,6 +211,15 @@
                                 <color key="textColor" red="1" green="0.1286529601351124" blue="0.22011018539079208" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4X3-Sn-vlR">
+                                <rect key="frame" x="113" y="412" width="146" height="91"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="146" id="3xW-ec-mhv"/>
+                                    <constraint firstAttribute="height" constant="91" id="h68-US-Dir"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="Next"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -249,7 +249,7 @@
                             <constraint firstItem="tkJ-na-RPc" firstAttribute="leading" secondItem="YJb-x5-PWe" secondAttribute="trailing" constant="2" id="x9F-NP-qDy"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="ir6-yd-iSD"/>
+                    <tabBarItem key="tabBarItem" title="Choose Contact" image="Image" id="ir6-yd-iSD"/>
                     <connections>
                         <outlet property="add_contact" destination="tkJ-na-RPc" id="c4a-Tu-sgC"/>
                         <outlet property="contactPicker" destination="de4-EI-ETZ" id="Lq5-1k-9Db"/>
@@ -509,7 +509,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n0W-HK-hjh">
-                                <rect key="frame" x="49" y="277" width="190" height="216"/>
+                                <rect key="frame" x="49" y="272" width="190" height="216"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="190" id="bQw-IB-yz5"/>
                                 </constraints>
@@ -535,7 +535,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wev-t3-YDj">
-                                <rect key="frame" x="261" y="368" width="69" height="35"/>
+                                <rect key="frame" x="261" y="363" width="69" height="35"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="remove"/>
                                 <connections>
@@ -575,11 +575,11 @@
                             <constraint firstItem="6rX-gj-a97" firstAttribute="top" secondItem="n0W-HK-hjh" secondAttribute="bottom" constant="66" id="zQT-ea-EVO"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="bxx-n0-vmS"/>
+                    <tabBarItem key="tabBarItem" title="Choose Task" image="Image-1" id="Mke-IA-vTg"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="add_event" destination="jvD-M9-oTx" id="Zus-tF-jV0"/>
                         <outlet property="editProfile" destination="NMU-Mk-j4q" id="dTX-23-9NS"/>
@@ -714,11 +714,11 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lVw-oE-lce">
-                                <rect key="frame" x="34" y="402" width="275" height="114"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lVw-oE-lce">
+                                <rect key="frame" x="0.0" y="402" width="375" height="137"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" red="1" green="0.12865296009999999" blue="0.22011018539999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -778,7 +778,7 @@
             </objects>
             <point key="canvasLocation" x="304.80000000000001" y="948.57571214392806"/>
         </scene>
-        <!--Item-->
+        <!--Start Task-->
         <scene sceneID="Zeo-fd-DTC">
             <objects>
                 <viewController id="Q3m-m0-Crh" customClass="Step3ViewController" customModule="Secret_App" customModuleProvider="target" sceneMemberID="viewController">
@@ -857,7 +857,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="6wW-2e-Rye"/>
+                    <tabBarItem key="tabBarItem" title="Start Task" image="start" id="6wW-2e-Rye"/>
                     <connections>
                         <outlet property="additional_message" destination="86k-iT-BRS" id="PDR-Ho-CSl"/>
                         <outlet property="editProfile" destination="E5z-ei-Xgq" id="eSu-XW-Idf"/>
@@ -869,7 +869,7 @@
             </objects>
             <point key="canvasLocation" x="2341.5999999999999" y="1208.5457271364319"/>
         </scene>
-        <!--Item-->
+        <!--Set Timer-->
         <scene sceneID="OC6-fK-06z">
             <objects>
                 <viewController id="qUu-V0-Y46" customClass="SetTimeViewController" customModule="Secret_App" customModuleProvider="target" sceneMemberID="viewController">
@@ -926,7 +926,7 @@
                             <constraint firstItem="VLP-xM-ee0" firstAttribute="leading" secondItem="BRJ-P2-cz1" secondAttribute="trailing" constant="8" symbolic="YES" id="zly-cn-QaJ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="eW4-a5-ZWM"/>
+                    <tabBarItem key="tabBarItem" title="Set Timer" image="Image-2" id="eW4-a5-ZWM"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="editProfile" destination="PCl-xc-uNE" id="8df-P0-vnT"/>
@@ -937,8 +937,14 @@
             <point key="canvasLocation" x="1016.8" y="1208.5457271364319"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Image" width="16" height="16"/>
+        <image name="Image-1" width="34" height="27"/>
+        <image name="Image-2" width="17" height="16"/>
+        <image name="start" width="35" height="32"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qdc-pT-QXx"/>
         <segue reference="Kve-4o-Ra7"/>
+        <segue reference="1GV-MB-3KY"/>
     </inferredMetricsTieBreakers>
 </document>

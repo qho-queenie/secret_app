@@ -43,9 +43,9 @@ class RegistrationController: UIViewController {
             }
             else {
                 print ((jsonString["validation_errors"][0].string)!)
-                self.validation.text = " "
+                self.validation.text = ""
                 for index in 0..<(jsonString["validation_errors"].array)!.count {
-                    self.validation.text! += (jsonString["validation_errors"][index].string)!
+                    self.validation.text! += (jsonString["validation_errors"][index].string)! + "\n"
                 }
             }
             }
