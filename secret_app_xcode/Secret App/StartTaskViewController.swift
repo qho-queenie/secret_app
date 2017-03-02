@@ -17,6 +17,7 @@ class Step3ViewController: UIViewController {
     @IBOutlet weak var editProfile: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadData()
         print("Step 3 View Controller")
         self.editProfile.setTitle(TaskGlobalStorage.user_first_name, for: .normal)
         print (TaskGlobalStorage.emergency_contact_id)
@@ -31,6 +32,35 @@ class Step3ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func loadData(){
+        let url = URL(string: "http://\(TaskGlobalStorage.ip_add)/display_user")
+        var request = URLRequest(url: url!)
+        request.httpMethod = "GET"
+        HTTP.request(request: request, callback: loadDataCallback)
+        print ("url")
+        print (url)
+    }
+    
+    func loadDataCallback(JSON_response: JSON){
+        if let unwrapped = JSON_response["data"][0]["id"].int {
+            TaskGlobalStorage.user_id = unwrapped
+        }
+        else{
+            TaskGlobalStorage.user_id = 0
+        }
+        
+        print("loadDataCallback")
+        print(JSON_response)
+        print(JSON_response["data"].count)
+        
+        
+        DispatchQueue.main.async {
+            if (TaskGlobalStorage.user_id == 0){
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+    }
+
     @IBAction func startAction(_ sender: Any) {
         print("minutes: \(TaskGlobalStorage.minutes)")
         print("task_id: \(TaskGlobalStorage.task_id)")

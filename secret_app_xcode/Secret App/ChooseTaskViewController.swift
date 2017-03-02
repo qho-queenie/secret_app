@@ -11,6 +11,8 @@ public class TaskGlobalStorage{
     public static var user_last_name:String = ""
     public static var user_email:String = ""
     public static var user_number:String = ""
+    public static var user_id:Int = 0
+    
     public static var ip_add = "54.193.124.182"
     
 }
@@ -28,18 +30,48 @@ class Step1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Step 1 View Controller")
-
         self.eventPicker.delegate = self
         self.eventPicker.dataSource = self
     }
 
     func loadData(){
-        let url = URL(string: "http://\(TaskGlobalStorage.ip_add)/display_events")
+        var url = URL(string: "http://\(TaskGlobalStorage.ip_add)/display_events")
         var request = URLRequest(url: url!)
         request.httpMethod = "GET"
         HTTP.request(request: request, callback: loadDataCallback)
+        
+        
+        url = URL(string: "http://\(TaskGlobalStorage.ip_add)/display_user")
+        request = URLRequest(url: url!)
+        request.httpMethod = "GET"
+        HTTP.request(request: request, callback: getUserCallback)
+        print ("url")
+        print (url)
+    }
+    
+    func getUserCallback(JSON_response: JSON){
+        if let unwrapped = JSON_response["data"][0]["id"].int {
+            TaskGlobalStorage.user_id = unwrapped
+        }
+        else{
+            TaskGlobalStorage.user_id = 0
+        }
+        
+        print("loadDataCallback")
+        print(JSON_response)
+        print(JSON_response["data"].count)
+        
+        
+        DispatchQueue.main.async {
+            if (TaskGlobalStorage.user_id == 0){
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
     }
 
+
+
+    
     func loadDataCallback(JSON_response: JSON){
         self.picker = []
         self.public_event_id = []

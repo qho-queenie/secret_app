@@ -15,11 +15,20 @@ class RegistrationController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("registration controller")
+        if (TaskGlobalStorage.user_id > 0){
+            self.navigationController?.popViewController(animated: true)
+        }
         // Do any additional setup after loading the view, typically from a nib.
     }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let backItem = UIBarButtonItem()
+        backItem.title = "Logout"
+        navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
+    }
     
+
     @IBAction func to_reg(_ sender: UIButton) {
-        
         var request = URLRequest(url: URL(string: "http://\(TaskGlobalStorage.ip_add)/registration")!)
         request.httpMethod = "POST"
         let postString = "first_name=\(first_name.text!)&last_name=\(last_name.text!)&email=\(email.text!)&password=\(password.text!)&confirm_password=\(confirm_password.text!)&phone=\(phone.text!)"

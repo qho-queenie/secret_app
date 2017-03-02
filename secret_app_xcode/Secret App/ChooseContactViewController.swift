@@ -125,12 +125,39 @@ class Step2ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         }
         loadData()
     }
+    
+    func getUserCallback(JSON_response: JSON){
+        if let unwrapped = JSON_response["data"][0]["id"].int {
+            TaskGlobalStorage.user_id = unwrapped
+        }
+        else{
+            TaskGlobalStorage.user_id = 0
+        }
+        
+        print("loadDataCallback")
+        print(JSON_response)
+        print(JSON_response["data"].count)
+        
+        
+        DispatchQueue.main.async {
+            if (TaskGlobalStorage.user_id == 0){
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+    }
 
 func loadData(){
-    let url = URL(string: "http://\(TaskGlobalStorage.ip_add)/display_contacts")
+    var url = URL(string: "http://\(TaskGlobalStorage.ip_add)/display_contacts")
     var request = URLRequest(url: url!)
     request.httpMethod = "GET"
     HTTP.request(request: request, callback: loadDataCallback)
+    
+    url = URL(string: "http://\(TaskGlobalStorage.ip_add)/display_user")
+    request = URLRequest(url: url!)
+    request.httpMethod = "GET"
+    HTTP.request(request: request, callback: getUserCallback)
+    print ("url")
+    print (url)
 }
 
 func loadDataCallback(JSON_response: JSON){
@@ -138,6 +165,7 @@ func loadDataCallback(JSON_response: JSON){
     self.contact_id = []
     self.contact_status = []
     self.contact_phone = []
+    
     
     print("loadDataCallback")
     print(JSON_response)

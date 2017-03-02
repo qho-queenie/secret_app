@@ -11,6 +11,13 @@ class LoginController: UIViewController {
     @IBOutlet weak var email_login: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var forgotPassword: UIButton!
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let backItem = UIBarButtonItem()
+        backItem.title = "Logout"
+        navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
+    }
+    
     @IBAction func loginButtonPressed(_ sender: Any) {
 
         var request = URLRequest(url: URL(string: "http://\(TaskGlobalStorage.ip_add)/login")!)

@@ -14,7 +14,7 @@
         <scene sceneID="NRi-IM-mvY">
             <objects>
                 <navigationController id="dno-IL-CAo" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="BXN-TD-sRo">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="BXN-TD-sRo">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -425,7 +425,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Lvv-mH-Bgi">
-                                <rect key="frame" x="16" y="152" width="343" height="370"/>
+                                <rect key="frame" x="16" y="147" width="343" height="370"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="370" id="jq8-i9-HpM"/>
@@ -939,12 +939,12 @@
     </scenes>
     <resources>
         <image name="Image" width="16" height="16"/>
-        <image name="Image-1" width="34" height="27"/>
-        <image name="Image-2" width="17" height="16"/>
+        <image name="Image-1" width="40" height="32"/>
+        <image name="Image-2" width="35" height="33"/>
         <image name="start" width="35" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Kve-4o-Ra7"/>
-        <segue reference="1GV-MB-3KY"/>
+        <segue reference="qdc-pT-QXx"/>
     </inferredMetricsTieBreakers>
 </document>
