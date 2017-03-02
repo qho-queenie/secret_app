@@ -202,6 +202,7 @@ func loadDataCallback(JSON_response: JSON){
 }
 
 override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(false)
     loadData()
 }
 

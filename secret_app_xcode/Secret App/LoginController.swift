@@ -12,9 +12,11 @@ class LoginController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var forgotPassword: UIButton!
     
+    var backButtonTitle = "Back";
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let backItem = UIBarButtonItem()
-        backItem.title = "Logout"
+        backItem.title = backButtonTitle
         navigationItem.backBarButtonItem = backItem // This will show in the next view controller being pushed
     }
     
@@ -57,6 +59,7 @@ class LoginController: UIViewController {
                 print (json)
                 
                 if (json["success"].bool! == true){
+                    self.backButtonTitle = "Logout"
                     self.performSegue(withIdentifier: "LoginSegue", sender: self.loginButton)
                 }
                 else {
@@ -126,9 +129,21 @@ class LoginController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        
+        if(TaskGlobalStorage.user_id == 0)
+        {
+            validation.text = "Please log in again."
+        }
+        self.backButtonTitle = "Back";
+        TaskGlobalStorage.user_id = -1;
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("login controller")
+
 //        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
 //        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
 //        

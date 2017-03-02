@@ -15,10 +15,14 @@ class RegistrationController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("registration controller")
-        if (TaskGlobalStorage.user_id > 0){
-            self.navigationController?.popViewController(animated: true)
-        }
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        if (TaskGlobalStorage.user_id > 0){
+            _ = self.navigationController?.popViewController(animated: true)
+        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

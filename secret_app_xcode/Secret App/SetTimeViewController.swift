@@ -8,9 +8,13 @@ class SetTimeViewController: UIViewController {
         TaskGlobalStorage.minutes = (sender as AnyObject).text!
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        loadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadData()
         print("Set Time View Controller")
             self.editProfile.setTitle(TaskGlobalStorage.user_first_name, for: .normal)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)

@@ -38,6 +38,7 @@ class contactsStatusTableView: UIViewController, UITableViewDataSource, UITableV
 
     }
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
         loadData()
     }
     
