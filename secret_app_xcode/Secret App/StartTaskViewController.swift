@@ -25,6 +25,8 @@ class Step3ViewController: UIViewController {
         print (TaskGlobalStorage.emergency_contact_phone)
         print (TaskGlobalStorage.user_first_name)
         // Do any additional setup after loading the view, typically from a nib.
+        NotificationCenter.default.addObserver(self, selector: #selector(loadData), name: .UIApplicationWillEnterForeground, object: nil)
+
     }
     
     override func didReceiveMemoryWarning() {
