@@ -2,6 +2,8 @@ import UIKit
 
 class Step2ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
 
+    @IBOutlet weak var sms_status: UILabel!
+    
     @IBOutlet weak var valid: UILabel!
     @IBOutlet weak var editProfile: UIButton!
     var picker: [String] = [String]()
@@ -111,10 +113,11 @@ class Step2ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         print (data)
         DispatchQueue.main.async {
             print ("bitch ass")
-            print (data["success"])
             if (data["success"] == true){
-                print ("nth")
-                self.valid.text = ""
+            print (data["validation_errors"])
+                self.valid.text = "Your request to the contact has been sent. Please navigate to your profile > Contact Statuses for all pending and accepted contacts"
+//                for i in 0..<(data["validation_errors"].array)!.count{
+//                    self.valid.text! += (data["validation_errors"][i].string)! + "\n"
             }
             else {
             self.valid.text = " "
@@ -203,6 +206,7 @@ func loadDataCallback(JSON_response: JSON){
 
 override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(false)
+    self.valid.text = " ";
     loadData()
 }
 

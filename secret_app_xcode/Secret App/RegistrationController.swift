@@ -1,4 +1,4 @@
-import UIKit
+    import UIKit
 
 class RegistrationController: UIViewController {
     
@@ -15,6 +15,8 @@ class RegistrationController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("registration controller")
+        
+        phone.placeholder = "1(area-code)xxx-xxxx"
         // Do any additional setup after loading the view, typically from a nib.
     }
     
