@@ -57,6 +57,8 @@ class Step3ViewController: UIViewController {
         DispatchQueue.main.async {
             if (TaskGlobalStorage.user_id == 0){
                 self.navigationController?.popViewController(animated: true)
+            }else{
+                self.updateTimer(start: true)
             }
         }
     }
@@ -89,10 +91,14 @@ class Step3ViewController: UIViewController {
         self.stopCountDown = false;
     }
     
+    var total = 0;
+    var timerRunning = false;
+    
     func timerCount(totalSeconds: Int){
+        self.timerRunning = true;
         var timeMinutes = totalSeconds / 60
         var timeSeconds = totalSeconds % 60
-        var total = totalSeconds
+        self.total = totalSeconds
         let when = DispatchTime.now() + 1
         DispatchQueue.main.asyncAfter(deadline: when) {
             timeSeconds = timeSeconds - 1
@@ -101,6 +107,7 @@ class Step3ViewController: UIViewController {
             if(timeSeconds < 0){
                 timeMinutes = timeMinutes - 1
                 timeSeconds = 59
+                self.updateTimer(start: false)
             }
             if(timeMinutes < 10){
                 timeMinuteString = "0"
@@ -116,9 +123,39 @@ class Step3ViewController: UIViewController {
             self.timerLabel.text! = timeMinuteString + ":" + timeSecondString
             
             if(totalSeconds > 1 && self.stopCountDown == false){
-                total = total - 1
-                self.timerCount(totalSeconds: total)
+                self.total = self.total - 1
+                self.timerCount(totalSeconds: self.total)
             }
+            else
+            {
+                self.timerRunning = false;
+            }
+        }
+    }
+    
+    func updateTimer(start: Bool){
+        let url = URL(string: "http://\(TaskGlobalStorage.ip_add)/get_current_timer")
+        var request = URLRequest(url: url!)
+        request.httpMethod = "GET"
+        if(start){
+            HTTP.request(request: request, callback: updateTimerCallbackWithStart)
+        }
+        else{
+            HTTP.request(request: request, callback: updateTimerCallbackWithoutStart)
+        }
+    }
+    
+    func updateTimerCallbackWithoutStart(data: JSON){
+        print(data)
+        if let timeRemaining = data["timeRemaining"].int{
+            self.total = timeRemaining
+        }
+    }
+    
+    func updateTimerCallbackWithStart(data: JSON){
+        updateTimerCallbackWithoutStart(data: data)
+        if(self.total > 0 && !self.timerRunning){
+            timerCount(totalSeconds: self.total)
         }
     }
 
