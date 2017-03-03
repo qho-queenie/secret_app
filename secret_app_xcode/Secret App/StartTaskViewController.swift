@@ -64,6 +64,41 @@ class Step3ViewController: UIViewController {
             }
         }
     }
+    
+    @IBOutlet weak var startButton: UIButton!
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        var valid = true
+        
+        if TaskGlobalStorage.minutes == ""{
+            print("minutes is not valid")
+            valid = false
+        }
+        if TaskGlobalStorage.emergency_contact_phone == "" {
+            print("contact phone is not valid")
+            valid = false
+        }
+        if TaskGlobalStorage.task_name == ""{
+            print("task name is not valid")
+            valid = false
+        }
+        if TaskGlobalStorage.emergency_contact_id < 1{
+            print("contact id is not valid")
+            valid = false
+        }
+        if TaskGlobalStorage.emergency_contact_name == ""{
+            print("contact name is not valid")
+            valid = false
+        }
+        
+        if !valid{
+            startButton.isHidden = true
+        }
+        else{
+            startButton.isHidden = false
+        }
+            
+    }
 
     @IBAction func startAction(_ sender: Any) {
         print("minutes: \(TaskGlobalStorage.minutes)")
@@ -73,7 +108,6 @@ class Step3ViewController: UIViewController {
         print("emergency_contact_name: \(TaskGlobalStorage.emergency_contact_name)")
         print ("additional message is: ")
         print (additional_message.text!)
-        
         
         var request = URLRequest(url: URL(string: "http://\(TaskGlobalStorage.ip_add)/start_task")!)
         request.httpMethod = "POST"

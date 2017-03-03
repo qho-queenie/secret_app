@@ -101,6 +101,10 @@ class Step1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
             self.public_event_id.append(toAppendEventId.int!)
         }
         
+        if JSON_response["data"].count > 0{
+            TaskGlobalStorage.task_name = picker[0]
+            TaskGlobalStorage.task_id = public_event_id[0]
+        }
         
         print("picker arr:")
         print(self.picker)

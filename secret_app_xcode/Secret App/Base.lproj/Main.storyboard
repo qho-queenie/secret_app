@@ -871,6 +871,7 @@
                     <connections>
                         <outlet property="additional_message" destination="86k-iT-BRS" id="PDR-Ho-CSl"/>
                         <outlet property="editProfile" destination="E5z-ei-Xgq" id="eSu-XW-Idf"/>
+                        <outlet property="startButton" destination="fzt-IR-UfW" id="WHf-Jp-YbA"/>
                         <outlet property="stopButton" destination="PNf-bg-PrH" id="m8x-b1-wCd"/>
                         <outlet property="timerLabel" destination="Gar-aa-T4C" id="xox-lt-K2I"/>
                     </connections>
