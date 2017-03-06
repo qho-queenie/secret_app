@@ -12,6 +12,17 @@ class Step2ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     var contact_phone : [String] = [String]()
     @IBOutlet weak var add_contact: UIButton!
     @IBOutlet weak var contactPicker: UIPickerView!
+    @IBOutlet weak var selectedContact: UILabel!
+    @IBAction func checkAvailability(_ sender: Any) {
+        let url = URL(string: "http://\(TaskGlobalStorage.ip_add)/check_contact_availability?id=\(contact_id[contactPicker.selectedRow(inComponent: 0)])")
+        var request = URLRequest(url: url!)
+        request.httpMethod = "GET"
+        HTTP.request(request: request, callback: checkAvailCallback)
+    }
+    
+    func checkAvailCallback(data: JSON){
+    
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -192,6 +203,7 @@ func loadDataCallback(JSON_response: JSON){
     
     if(self.picker.count > 0){
         TaskGlobalStorage.emergency_contact_name = self.picker[0]
+        self.selectedContact.text = "Selected Contact: \(self.picker[0])"
         TaskGlobalStorage.emergency_contact_id = contact_id[0]
         TaskGlobalStorage.emergency_contact_phone = contact_phone[0]
     }
@@ -230,6 +242,7 @@ func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent c
     TaskGlobalStorage.emergency_contact_name = self.picker[row]
     TaskGlobalStorage.emergency_contact_id = contact_id[row]
     TaskGlobalStorage.emergency_contact_phone = contact_phone[row]
+    self.selectedContact.text = "Selected Contact: \(self.picker[row])"
     print (TaskGlobalStorage.emergency_contact_name)
     print(TaskGlobalStorage.emergency_contact_id)
     print(TaskGlobalStorage.emergency_contact_phone)
