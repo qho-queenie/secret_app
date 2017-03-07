@@ -7,7 +7,7 @@ class Step2ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     @IBOutlet weak var valid: UILabel!
     @IBOutlet weak var editProfile: UIButton!
     var picker: [String] = [String]()
-//    var contact_id : [Int] = [Int]()
+    var contact_id : [Int] = [Int]()
 //    var contact_status: [Int] = [Int]()
 //    var contact_phone : [String] = [String]()
     @IBOutlet weak var add_contact: UIButton!
@@ -177,8 +177,8 @@ func loadData(){
 func loadDataCallback(JSON_response: JSON){
     self.picker = []
     self.contact_id = []
-    self.contact_status = []
-    self.contact_phone = []
+//    self.contact_status = []
+//    self.contact_phone = []
     
     
     print("loadDataCallback")
@@ -196,17 +196,17 @@ func loadDataCallback(JSON_response: JSON){
             self.picker.append(toAppend.string! + " " + toAppend2.string!)
 //            self.picker.append()
             self.contact_id.append(toAppendContactId.int!)
-            self.contact_phone.append(toAppendContactPhone.string!)
-            self.contact_status.append(toAppendContactStatus.int!)
+//            self.contact_phone.append(toAppendContactPhone.string!)
+//            self.contact_status.append(toAppendContactStatus.int!)
         }
     }
     
-//    if(self.picker.count > 0){
+    if(self.picker.count > 0){
 //        TaskGlobalStorage.emergency_contact_name = self.picker[0]
-//        self.selectedContact.text = "Selected Contact: \(self.picker[0])"
-//        TaskGlobalStorage.emergency_contact_id = contact_id[0]
+        self.selectedContact.text = "Selected Contact: \(self.picker[0])"
+        TaskGlobalStorage.emergency_contact_id = contact_id[0]
 //        TaskGlobalStorage.emergency_contact_phone = contact_phone[0]
-//    }
+    }
     
     print("picker arr:")
     print(self.picker)
@@ -240,7 +240,7 @@ func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent c
 
 func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
 //    TaskGlobalStorage.emergency_contact_name = self.picker[row]
-//    TaskGlobalStorage.emergency_contact_id = contact_id[row]
+    TaskGlobalStorage.emergency_contact_id = contact_id[row]
 //    TaskGlobalStorage.emergency_contact_phone = contact_phone[row]
     self.selectedContact.text = "Selected Contact: \(self.picker[row])"
     print (TaskGlobalStorage.emergency_contact_name)
