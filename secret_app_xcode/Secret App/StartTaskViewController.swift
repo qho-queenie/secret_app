@@ -74,14 +74,15 @@ class Step3ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     }
     
     func availCallback(JSON_response: JSON) {
+        print("available contacts:")
         print(JSON_response);
         
         for i in 0..<JSON_response.count
         {
-            self.availableContacts.append(JSON_response["data"][i]["contact_name"].string!)
-            self.contact_id[i] = JSON_response["data"][i]["id"].int!
-            self.contact_status[i] = JSON_response["data"][i]["contact_status"].int!
-            self.contact_phone[i] = JSON_response["data"][i]["contact_phone"].string!
+            self.availableContacts.append(JSON_response["data"][i]["contact_name"].string ?? "")
+            self.contact_id.append(JSON_response["data"][i]["id"].int ?? 0)
+            self.contact_status.append(JSON_response["data"][i]["contact_status"].int ?? 0)
+            self.contact_phone.append(JSON_response["data"][i]["contact_phone"].string ?? "")
         }
         DispatchQueue.main.async {
             self.AvailPicker.reloadAllComponents()
@@ -114,6 +115,7 @@ class Step3ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
         checkStartButton()
+        getAvailableContacts()
     }
     
     func checkStartButton(){
