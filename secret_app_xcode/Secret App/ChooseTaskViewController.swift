@@ -12,7 +12,8 @@ public class TaskGlobalStorage{
     public static var user_email:String = ""
     public static var user_number:String = ""
     public static var user_id:Int = -1
-    
+    public static var additional_message:String = ""
+    public static var contact_available:Bool = false
     public static var ip_add = "54.193.124.182"
     
 }

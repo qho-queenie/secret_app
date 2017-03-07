@@ -1,8 +1,15 @@
 import UIKit
 
-class Step3ViewController: UIViewController {
+class Step3ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     var stopCountDown = false;
-    @IBOutlet weak var additional_message: UITextField!
+    var availableContacts: [String] = [String]()
+    
+    var contact_id : [Int] = [Int]()
+    var contact_status: [Int] = [Int]()
+    var contact_phone : [String] = [String]()
+    
+    @IBOutlet weak var AvailPicker: UIPickerView!
+    @IBOutlet weak var selectedContact: UILabel!
     @IBOutlet weak var stopButton: UIButton!
     @IBAction func stopCount(_ sender: Any) {
         let url = URL(string: "http://\(TaskGlobalStorage.ip_add)/end_current_task")
@@ -17,13 +24,27 @@ class Step3ViewController: UIViewController {
     @IBOutlet weak var editProfile: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.AvailPicker.delegate = self
+        self.AvailPicker.dataSource = self
+        
         loadData()
         print("Step 3 View Controller")
+        
+        if(self.availableContacts.count > 0){
+            TaskGlobalStorage.emergency_contact_name = self.availableContacts[0]
+            self.selectedContact.text = "Selected Contact: \(self.availableContacts[0])"
+            TaskGlobalStorage.emergency_contact_id = contact_id[0]
+            TaskGlobalStorage.emergency_contact_phone = contact_phone[0]
+        }
+        
+        print(TaskGlobalStorage.user_first_name)
         self.editProfile.setTitle(TaskGlobalStorage.user_first_name, for: .normal)
         print (TaskGlobalStorage.emergency_contact_id)
         print (TaskGlobalStorage.emergency_contact_name)
         print (TaskGlobalStorage.emergency_contact_phone)
         print (TaskGlobalStorage.user_first_name)
+        
         // Do any additional setup after loading the view, typically from a nib.
         NotificationCenter.default.addObserver(self, selector: #selector(updateTimer), name: .UIApplicationWillEnterForeground, object: nil)
 
@@ -41,6 +62,30 @@ class Step3ViewController: UIViewController {
         HTTP.request(request: request, callback: loadDataCallback)
         print ("url")
         print (url)
+    }
+    
+    func getAvailableContacts(){
+        let url = URL(string: "http://\(TaskGlobalStorage.ip_add)/get_all_available_contacts")
+        var request = URLRequest(url: url!)
+        request.httpMethod = "GET"
+        HTTP.request(request: request, callback: availCallback)
+        print ("url")
+        print (url)
+    }
+    
+    func availCallback(JSON_response: JSON) {
+        print(JSON_response);
+        
+        for i in 0..<JSON_response.count
+        {
+            self.availableContacts.append(JSON_response["data"][i]["contact_name"].string!)
+            self.contact_id[i] = JSON_response["data"][i]["id"].int!
+            self.contact_status[i] = JSON_response["data"][i]["contact_status"].int!
+            self.contact_phone[i] = JSON_response["data"][i]["contact_phone"].string!
+        }
+        DispatchQueue.main.async {
+            self.AvailPicker.reloadAllComponents()
+        }
     }
     
     func loadDataCallback(JSON_response: JSON){
@@ -68,6 +113,10 @@ class Step3ViewController: UIViewController {
     @IBOutlet weak var startButton: UIButton!
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
+        checkStartButton()
+    }
+    
+    func checkStartButton(){
         var valid = true
         
         if TaskGlobalStorage.minutes == ""{
@@ -97,7 +146,6 @@ class Step3ViewController: UIViewController {
         else{
             startButton.isHidden = false
         }
-            
     }
 
     @IBAction func startAction(_ sender: Any) {
@@ -106,12 +154,12 @@ class Step3ViewController: UIViewController {
         print("task_name: \(TaskGlobalStorage.task_name)")
         print("emergency_contact_id: \(TaskGlobalStorage.emergency_contact_id)")
         print("emergency_contact_name: \(TaskGlobalStorage.emergency_contact_name)")
-        print ("additional message is: ")
-        print (additional_message.text!)
+//        print ("additional message is: ")
+//        print (additional_message.text!)
         
         var request = URLRequest(url: URL(string: "http://\(TaskGlobalStorage.ip_add)/start_task")!)
         request.httpMethod = "POST"
-        let postString = "contact_name=\(TaskGlobalStorage.emergency_contact_name)&contact_phone=\(TaskGlobalStorage.emergency_contact_phone)&user_first_name=\(TaskGlobalStorage.user_first_name)&event_name=\(TaskGlobalStorage.task_name)&minutes=\(TaskGlobalStorage.minutes)&additional_message=\(additional_message.text!)"
+        let postString = "contact_name=\(TaskGlobalStorage.emergency_contact_name)&contact_phone=\(TaskGlobalStorage.emergency_contact_phone)&user_first_name=\(TaskGlobalStorage.user_first_name)&event_name=\(TaskGlobalStorage.task_name)&minutes=\(TaskGlobalStorage.minutes)&additional_message=\(TaskGlobalStorage.additional_message)"
         print (postString)
         request.httpBody = postString.data(using: .utf8)
         HTTP.request(request: request, callback: timerReqCallback)
@@ -194,5 +242,29 @@ class Step3ViewController: UIViewController {
             timerCount(totalSeconds: self.total)
         }
     }
+    
+    // Picker View funcs:
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return self.availableContacts.count
+        print ("fuck")
+        print (self.availableContacts.count)
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return self.availableContacts[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        TaskGlobalStorage.emergency_contact_name = self.availableContacts[row]
+        TaskGlobalStorage.emergency_contact_id = self.contact_id[row]
+        TaskGlobalStorage.emergency_contact_phone = self.contact_phone[row]
+        self.selectedContact.text = "Selected Contact: \(self.availableContacts[row])"
+        checkStartButton()
+    }
+
 
 }
