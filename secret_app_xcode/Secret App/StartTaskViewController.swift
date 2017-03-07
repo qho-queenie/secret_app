@@ -31,12 +31,12 @@ class Step3ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         loadData()
         print("Step 3 View Controller")
         
-        if(self.availableContacts.count > 0){
-            TaskGlobalStorage.emergency_contact_name = self.availableContacts[0]
-            self.selectedContact.text = "Selected Contact: \(self.availableContacts[0])"
-            TaskGlobalStorage.emergency_contact_id = contact_id[0]
-            TaskGlobalStorage.emergency_contact_phone = contact_phone[0]
-        }
+//        if(self.availableContacts.count > 0){
+//            TaskGlobalStorage.emergency_contact_name = self.availableContacts[0]
+//            self.selectedContact.text = "Selected Contact: \(self.availableContacts[0])"
+//            TaskGlobalStorage.emergency_contact_id = contact_id[0]
+//            TaskGlobalStorage.emergency_contact_phone = contact_phone[0]
+//        }
         
         print(TaskGlobalStorage.user_first_name)
         self.editProfile.setTitle(TaskGlobalStorage.user_first_name, for: .normal)
@@ -60,8 +60,6 @@ class Step3ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         var request = URLRequest(url: url!)
         request.httpMethod = "GET"
         HTTP.request(request: request, callback: loadDataCallback)
-        print ("url")
-        print (url)
     }
     
     func getAvailableContacts(){
@@ -69,23 +67,36 @@ class Step3ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         var request = URLRequest(url: url!)
         request.httpMethod = "GET"
         HTTP.request(request: request, callback: availCallback)
-        print ("url")
-        print (url)
     }
     
     func availCallback(JSON_response: JSON) {
         print("available contacts:")
-        print(JSON_response);
+        print(JSON_response)
+        print(JSON_response[0])
         
-        for i in 0..<JSON_response.count
-        {
-            self.availableContacts.append(JSON_response["data"][i]["contact_name"].string ?? "")
-            self.contact_id.append(JSON_response["data"][i]["id"].int ?? 0)
-            self.contact_status.append(JSON_response["data"][i]["contact_status"].int ?? 0)
-            self.contact_phone.append(JSON_response["data"][i]["contact_phone"].string ?? "")
-        }
+
         DispatchQueue.main.async {
+            self.availableContacts = [String]()
+            self.contact_id = [Int]()
+            self.contact_status = [Int]()
+            self.contact_phone = [String]()
+            
+            for i in 0..<JSON_response.count
+            {
+                self.availableContacts.append("\(JSON_response[i]["contact_first_name"].string ?? "") \(JSON_response[i]["contact_last_name"].string ?? "")")
+                self.contact_id.append(JSON_response[i]["id"].int ?? 0)
+                self.contact_status.append(JSON_response[i]["contact_status"].int ?? 0)
+                self.contact_phone.append(JSON_response[i]["contact_phone"].string ?? "")
+            }
+            print(self.availableContacts)
             self.AvailPicker.reloadAllComponents()
+            if(self.availableContacts.count > 0){
+                TaskGlobalStorage.emergency_contact_name = self.availableContacts[0]
+                self.selectedContact.text = "Selected Contact: \(self.availableContacts[0])"
+                TaskGlobalStorage.emergency_contact_id = self.contact_id[0]
+                TaskGlobalStorage.emergency_contact_phone = self.contact_phone[0]
+            }
+            self.checkStartButton()
         }
     }
     
@@ -114,7 +125,6 @@ class Step3ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     @IBOutlet weak var startButton: UIButton!
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
-        checkStartButton()
         getAvailableContacts()
     }
     
