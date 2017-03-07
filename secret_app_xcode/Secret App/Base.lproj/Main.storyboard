@@ -220,8 +220,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oUP-gn-5su">
-                                <rect key="frame" x="127" y="473" width="120" height="30"/>
-                                <state key="normal" title="Check Availability"/>
+                                <rect key="frame" x="65" y="473" width="244" height="30"/>
+                                <state key="normal" title="Send Availability Request (SMS)"/>
                                 <connections>
                                     <action selector="checkAvailability:" destination="O5b-mr-9cp" eventType="touchUpInside" id="9Nf-t1-wCY"/>
                                 </connections>
@@ -235,15 +235,13 @@
                             <constraint firstItem="guL-wn-r3k" firstAttribute="leading" secondItem="hWJ-aa-ctg" secondAttribute="leadingMargin" constant="7" id="Bi2-Pp-rR3"/>
                             <constraint firstItem="YJb-x5-PWe" firstAttribute="top" secondItem="TSv-kb-HBr" secondAttribute="bottom" constant="8" symbolic="YES" id="Bmy-lz-9cT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="TSv-kb-HBr" secondAttribute="trailing" constant="88" id="FVu-w8-UC2"/>
-                            <constraint firstItem="oUP-gn-5su" firstAttribute="centerX" secondItem="hWJ-aa-ctg" secondAttribute="centerX" id="G3V-gW-EeG"/>
                             <constraint firstItem="YJb-x5-PWe" firstAttribute="bottom" secondItem="tkJ-na-RPc" secondAttribute="bottom" id="GrG-xl-dSY"/>
                             <constraint firstItem="guL-wn-r3k" firstAttribute="top" secondItem="1aU-FO-8de" secondAttribute="bottom" id="HFI-aE-1u1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="8HN-z7-RRO" secondAttribute="trailing" constant="37" id="K78-e7-ojM"/>
+                            <constraint firstItem="hom-6L-erd" firstAttribute="top" secondItem="oUP-gn-5su" secondAttribute="bottom" constant="51" id="MaN-qy-P8K"/>
                             <constraint firstItem="hom-6L-erd" firstAttribute="top" secondItem="4hA-Zf-NqO" secondAttribute="bottom" constant="77" id="N7l-2c-AS0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="de4-EI-ETZ" secondAttribute="trailing" constant="92" id="N8p-bH-oB4"/>
                             <constraint firstItem="YJb-x5-PWe" firstAttribute="top" secondItem="tkJ-na-RPc" secondAttribute="top" id="NDG-TE-4NR"/>
-                            <constraint firstItem="oUP-gn-5su" firstAttribute="top" secondItem="de4-EI-ETZ" secondAttribute="bottom" constant="31" id="QSr-43-11a"/>
-                            <constraint firstItem="hom-6L-erd" firstAttribute="top" secondItem="oUP-gn-5su" secondAttribute="bottom" constant="51" id="RQH-a4-5LV"/>
                             <constraint firstItem="de4-EI-ETZ" firstAttribute="top" secondItem="TSv-kb-HBr" secondAttribute="bottom" constant="29" id="TjO-22-eUn"/>
                             <constraint firstItem="4hA-Zf-NqO" firstAttribute="leading" secondItem="hWJ-aa-ctg" secondAttribute="leadingMargin" constant="26" id="XlP-X1-7hL"/>
                             <constraint firstItem="TSv-kb-HBr" firstAttribute="top" secondItem="guL-wn-r3k" secondAttribute="bottom" constant="16" id="aar-6w-zi0"/>
@@ -251,9 +249,12 @@
                             <constraint firstItem="de4-EI-ETZ" firstAttribute="leading" secondItem="hWJ-aa-ctg" secondAttribute="leadingMargin" constant="16" id="eN3-IA-K6y"/>
                             <constraint firstItem="de4-EI-ETZ" firstAttribute="top" secondItem="ZgF-O6-0i4" secondAttribute="bottom" constant="88" id="f89-VU-l8r"/>
                             <constraint firstItem="tkJ-na-RPc" firstAttribute="leading" secondItem="YJb-x5-PWe" secondAttribute="trailing" constant="2" id="gYt-F0-vxB"/>
+                            <constraint firstItem="oUP-gn-5su" firstAttribute="top" secondItem="de4-EI-ETZ" secondAttribute="bottom" constant="31" id="kb0-j9-YAV"/>
                             <constraint firstItem="4hA-Zf-NqO" firstAttribute="top" secondItem="de4-EI-ETZ" secondAttribute="bottom" constant="8" symbolic="YES" id="km3-U6-xNd"/>
+                            <constraint firstItem="oUP-gn-5su" firstAttribute="leading" secondItem="hWJ-aa-ctg" secondAttribute="leadingMargin" constant="49" id="lMk-ba-71a"/>
                             <constraint firstItem="de4-EI-ETZ" firstAttribute="centerY" secondItem="8HN-z7-RRO" secondAttribute="centerY" id="mWT-Yh-GnB"/>
                             <constraint firstItem="ZgF-O6-0i4" firstAttribute="leading" secondItem="8HN-z7-RRO" secondAttribute="leading" id="nFz-um-Uie"/>
+                            <constraint firstItem="oUP-gn-5su" firstAttribute="centerX" secondItem="hWJ-aa-ctg" secondAttribute="centerX" id="nqf-ru-OJK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="guL-wn-r3k" secondAttribute="trailing" constant="28" id="ro9-ef-yZ5"/>
                             <constraint firstItem="YJb-x5-PWe" firstAttribute="leading" secondItem="hWJ-aa-ctg" secondAttribute="leadingMargin" constant="91" id="tO8-1S-DH8"/>
                             <constraint firstItem="TSv-kb-HBr" firstAttribute="leading" secondItem="hWJ-aa-ctg" secondAttribute="leadingMargin" id="voe-Xr-MrY"/>
@@ -446,7 +447,7 @@
                                         <rect key="frame" x="0.0" y="28" width="343" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z3J-9d-scd" id="Wzt-EV-0Rg">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="first" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aYE-iv-Y1T">
