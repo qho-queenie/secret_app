@@ -16,6 +16,7 @@ class Step3ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         var request = URLRequest(url: url!)
         request.httpMethod = "GET"
         HTTP.request(request: request, callback: endCountDownCallback)
+        spamCDLabel.text = " "
     }
     
     func endCountDownCallback(data:JSON){
@@ -191,7 +192,7 @@ class Step3ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
                 self.spamCDLabel.text = " "
             }
             else{
-                self.spamCDLabel.text = "You can only start a task every 10 minutes since the last time you started one."
+                self.spamCDLabel.text = "You can only start a task every 5 minutes since the last time you started one."
             }
         }
     }
@@ -295,6 +296,15 @@ class Step3ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let attributedString = NSAttributedString(string: availableContacts[row], attributes: [NSForegroundColorAttributeName : UIColor.white])
         return attributedString
+    }
+    
+    func clearTimeData(){
+        TaskGlobalStorage.minutes = ""
+        TaskGlobalStorage.task_name = ""
+        TaskGlobalStorage.emergency_contact_id = 0
+        TaskGlobalStorage.emergency_contact_name = ""
+        TaskGlobalStorage.emergency_contact_phone = ""
+        TaskGlobalStorage.additional_message = ""
     }
 
 
