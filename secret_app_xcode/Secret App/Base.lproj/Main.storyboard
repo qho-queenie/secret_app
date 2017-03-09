@@ -871,10 +871,20 @@
                                     <segue destination="fXJ-aE-QBx" kind="show" id="1GV-MB-3KY"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3B0-Nm-RSq">
+                                <rect key="frame" x="16" y="463" width="343" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="PYu-U1-LIG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.1326254204" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Gar-aa-T4C" firstAttribute="leading" secondItem="PNf-bg-PrH" secondAttribute="leading" constant="2" id="4Sq-8x-RUl"/>
+                            <constraint firstItem="3B0-Nm-RSq" firstAttribute="top" secondItem="HZw-Wm-EES" secondAttribute="bottom" constant="34" id="5PR-tJ-DWf"/>
                             <constraint firstItem="OoG-de-0N5" firstAttribute="leading" secondItem="Jrn-k1-GQS" secondAttribute="leading" constant="11" id="5aT-d7-ggY"/>
                             <constraint firstItem="Jrn-k1-GQS" firstAttribute="centerX" secondItem="t9S-Bh-XYz" secondAttribute="centerX" constant="-23" id="6uy-qe-z4W"/>
                             <constraint firstItem="E5z-ei-Xgq" firstAttribute="top" secondItem="20E-yp-J9M" secondAttribute="bottom" constant="8" symbolic="YES" id="7mW-ao-Gt2"/>
@@ -883,6 +893,7 @@
                             <constraint firstItem="fzt-IR-UfW" firstAttribute="top" secondItem="Gar-aa-T4C" secondAttribute="bottom" constant="37" id="A5H-sm-6MO"/>
                             <constraint firstItem="iMs-Uj-hVn" firstAttribute="leading" secondItem="t9S-Bh-XYz" secondAttribute="leadingMargin" constant="-16" id="BUg-5j-h9k"/>
                             <constraint firstItem="iMs-Uj-hVn" firstAttribute="top" secondItem="E5z-ei-Xgq" secondAttribute="bottom" constant="8" symbolic="YES" id="EbL-UB-ONr"/>
+                            <constraint firstItem="3B0-Nm-RSq" firstAttribute="leading" secondItem="8tc-gj-Mf8" secondAttribute="leading" id="Hkg-Ok-ZMI"/>
                             <constraint firstItem="iMs-Uj-hVn" firstAttribute="top" secondItem="OoG-de-0N5" secondAttribute="top" constant="18" id="JLz-Ip-TlS"/>
                             <constraint firstItem="PNf-bg-PrH" firstAttribute="top" secondItem="fzt-IR-UfW" secondAttribute="bottom" constant="25" id="JcW-EB-Hkl"/>
                             <constraint firstItem="8tc-gj-Mf8" firstAttribute="leading" secondItem="t9S-Bh-XYz" secondAttribute="leadingMargin" id="K43-zb-RwN"/>
@@ -897,6 +908,7 @@
                             <constraint firstItem="Gar-aa-T4C" firstAttribute="centerX" secondItem="fzt-IR-UfW" secondAttribute="centerX" constant="2" id="lYE-MX-9QV"/>
                             <constraint firstItem="Gar-aa-T4C" firstAttribute="top" secondItem="iMs-Uj-hVn" secondAttribute="bottom" constant="38" id="neV-hj-y8f"/>
                             <constraint firstItem="E5z-ei-Xgq" firstAttribute="trailing" secondItem="Up3-Au-4sy" secondAttribute="trailing" id="oEQ-er-yx6"/>
+                            <constraint firstItem="3B0-Nm-RSq" firstAttribute="trailing" secondItem="Up3-Au-4sy" secondAttribute="trailing" id="u6y-A4-WEK"/>
                             <constraint firstItem="OoG-de-0N5" firstAttribute="top" secondItem="20E-yp-J9M" secondAttribute="bottom" constant="40" id="vvB-Os-soI"/>
                             <constraint firstItem="iMs-Uj-hVn" firstAttribute="trailing" secondItem="Up3-Au-4sy" secondAttribute="trailing" constant="-39" id="wmQ-1d-Y0m"/>
                             <constraint firstItem="8tc-gj-Mf8" firstAttribute="baseline" secondItem="Up3-Au-4sy" secondAttribute="baseline" id="z2N-Kt-h6H"/>
@@ -907,6 +919,7 @@
                         <outlet property="AvailPicker" destination="iMs-Uj-hVn" id="zc0-bS-3SG"/>
                         <outlet property="editProfile" destination="E5z-ei-Xgq" id="eSu-XW-Idf"/>
                         <outlet property="selectedContact" destination="Jrn-k1-GQS" id="5ej-tD-csF"/>
+                        <outlet property="spamCDLabel" destination="3B0-Nm-RSq" id="jfZ-xf-Qpg"/>
                         <outlet property="startButton" destination="fzt-IR-UfW" id="WHf-Jp-YbA"/>
                         <outlet property="stopButton" destination="PNf-bg-PrH" id="m8x-b1-wCd"/>
                         <outlet property="timerLabel" destination="Gar-aa-T4C" id="xox-lt-K2I"/>
@@ -973,6 +986,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="additionalMessageAction:" destination="qUu-V0-Y46" eventType="editingDidEnd" id="7qH-M1-BAa"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1013,6 +1029,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Kve-4o-Ra7"/>
-        <segue reference="1GV-MB-3KY"/>
+        <segue reference="qFy-oL-6u3"/>
     </inferredMetricsTieBreakers>
 </document>

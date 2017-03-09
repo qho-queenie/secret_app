@@ -180,11 +180,20 @@ class Step3ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         
     }
     @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var spamCDLabel: UILabel!
     
     func timerReqCallback(data: JSON){
-        print(Int(TaskGlobalStorage.minutes)!*60)
-        timerCount(totalSeconds: Int(TaskGlobalStorage.minutes)!*60 )
-        self.stopCountDown = false;
+        
+        DispatchQueue.main.async {
+            if((data["spam_cooldown"].bool ?? false) == false){
+                self.timerCount(totalSeconds: Int(TaskGlobalStorage.minutes)!*60 )
+                self.stopCountDown = false;
+                self.spamCDLabel.text = " "
+            }
+            else{
+                self.spamCDLabel.text = "You can only start a task every 10 minutes since the last time you started one."
+            }
+        }
     }
     
     var total = 0;

@@ -21,7 +21,7 @@ class Step2ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     }
     
     func checkAvailCallback(data: JSON){
-    
+        print(data)
     }
     
     override func viewDidLoad() {
@@ -132,7 +132,7 @@ class Step2ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
             }
             else {
             self.valid.text = " "
-            for i in 0..<(data["validation_errors"].array)!.count{
+            for i in 0..<((data["validation_errors"].array) ?? []).count{
             self.valid.text! += (data["validation_errors"][i].string)! + "\n"
             }
         }

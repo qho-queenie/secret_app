@@ -12,6 +12,9 @@ class SetTimeViewController: UIViewController {
         super.viewWillAppear(false)
         loadData()
     }
+    @IBAction func additionalMessageAction(_ sender: Any) {
+        TaskGlobalStorage.additional_message = (sender as AnyObject).text;
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
