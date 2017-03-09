@@ -280,11 +280,16 @@ class Step3ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        TaskGlobalStorage.emergency_contact_name = self.availableContacts[row]
-        TaskGlobalStorage.emergency_contact_id = self.contact_id[row]
-        TaskGlobalStorage.emergency_contact_phone = self.contact_phone[row]
-        self.selectedContact.text = "Selected Contact: \(self.availableContacts[row])"
+        do{
+        try TaskGlobalStorage.emergency_contact_name = self.availableContacts[row]
+        try TaskGlobalStorage.emergency_contact_id = self.contact_id[row]
+        try TaskGlobalStorage.emergency_contact_phone = self.contact_phone[row]
+        try self.selectedContact.text = "Selected Contact: \(self.availableContacts[row])"
         checkStartButton()
+        }
+        catch{
+            print("chris is a lil bitch")
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
