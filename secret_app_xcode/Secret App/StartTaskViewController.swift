@@ -72,8 +72,6 @@ class Step3ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     func availCallback(JSON_response: JSON) {
         print("available contacts:")
         print(JSON_response)
-        print(JSON_response[0])
-        
 
         DispatchQueue.main.async {
             self.availableContacts = [String]()
@@ -270,9 +268,9 @@ class Step3ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return self.availableContacts.count
-        print ("fuck")
+        print ("availableContacts.count:")
         print (self.availableContacts.count)
+        return self.availableContacts.count
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
