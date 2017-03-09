@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4D2DC97D1E55317F0073CAD6 /* SetTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2DC97C1E55317F0073CAD6 /* SetTimeViewController.swift */; };
+		4D3AA3F91E721E470078E50F /* HowToViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3AA3F81E721E470078E50F /* HowToViewController.swift */; };
 		4D4F65251E42F1A2003518A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4F65241E42F1A2003518A8 /* AppDelegate.swift */; };
 		4D4F65271E42F1A2003518A8 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4F65261E42F1A2003518A8 /* LoginController.swift */; };
 		4D4F652A1E42F1A2003518A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D4F65281E42F1A2003518A8 /* Main.storyboard */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		4D2DC97C1E55317F0073CAD6 /* SetTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetTimeViewController.swift; sourceTree = "<group>"; };
+		4D3AA3F81E721E470078E50F /* HowToViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HowToViewController.swift; path = ../HowToViewController.swift; sourceTree = "<group>"; };
 		4D4F65211E42F1A2003518A8 /* Secret App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Secret App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D4F65241E42F1A2003518A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4D4F65261E42F1A2003518A8 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 		4D4F65231E42F1A2003518A8 /* Secret App */ = {
 			isa = PBXGroup;
 			children = (
+				4D3AA3F81E721E470078E50F /* HowToViewController.swift */,
 				4D4F65241E42F1A2003518A8 /* AppDelegate.swift */,
 				4D4F65261E42F1A2003518A8 /* LoginController.swift */,
 				7735872D1E48254700EED1BD /* SwiftyJSON.swift */,
@@ -302,6 +305,7 @@
 				77CE138E1E57D46A0085D1FC /* editProfileViewController.swift in Sources */,
 				4DD0BDD61E4805A400A80C40 /* ChooseTaskViewController.swift in Sources */,
 				4D4F65251E42F1A2003518A8 /* AppDelegate.swift in Sources */,
+				4D3AA3F91E721E470078E50F /* HowToViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

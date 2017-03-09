@@ -120,7 +120,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o8e-nc-Ruf">
-                                <rect key="frame" x="269" y="72" width="90" height="30"/>
+                                <rect key="frame" x="241" y="72" width="118" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
@@ -715,10 +715,10 @@
             </objects>
             <point key="canvasLocation" x="2000.8" y="-284.70764617691157"/>
         </scene>
-        <!--View Controller-->
+        <!--How To View Controller-->
         <scene sceneID="AZ4-Zb-RuE">
             <objects>
-                <viewController id="SsZ-KL-qkY" sceneMemberID="viewController">
+                <viewController id="SsZ-KL-qkY" customClass="HowToViewController" customModule="Secret_App" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="J8W-Rm-XJh"/>
                         <viewControllerLayoutGuide type="bottom" id="NZ5-8e-XT4"/>
@@ -727,24 +727,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mrh-WE-qZd">
-                                <rect key="frame" x="31" y="93" width="313" height="348"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mrh-WE-qZd">
+                                <rect key="frame" x="31" y="154" width="313" height="505"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <mutableString key="text">Do you live alone? Or do you always say "Text me when you are home"?
-1. Register for an account
-2. Add a few friends or family as your emergency contacts.
-3. Configure your upcoming task.
-4. Set the duration of your chosen task.
-5. If your contact is available, you can start the task's countdown.
-6. When your task is finish, check back in the app with the "stop" button to let your contact know that you are safe.
-7. If you have not checked back in before the countdown ends, your contact will receive a text message to make sure you are safe.</mutableString>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Do you live alone? Or do you always say &quot;Text me when you are home&quot;?" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ef-rL-AeM">
+                                <rect key="frame" x="31" y="106" width="328" height="58"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.3921723366" green="0.13499423860000001" blue="0.2837839425" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="contentLabel" destination="mrh-WE-qZd" id="4NG-SR-Nz0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yz2-Bi-BNh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
