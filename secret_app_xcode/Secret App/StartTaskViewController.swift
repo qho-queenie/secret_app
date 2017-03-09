@@ -286,6 +286,11 @@ class Step3ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         self.selectedContact.text = "Selected Contact: \(self.availableContacts[row])"
         checkStartButton()
     }
+    
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        let attributedString = NSAttributedString(string: availableContacts[row], attributes: [NSForegroundColorAttributeName : UIColor.white])
+        return attributedString
+    }
 
 
 }

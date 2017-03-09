@@ -224,28 +224,33 @@ override func viewWillAppear(_ animated: Bool) {
 
 
 // Picker View funcs:
-func numberOfComponents(in pickerView: UIPickerView) -> Int {
-    return 1
-}
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
 
-func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-    return self.picker.count
-    print ("fuck")
-    print (self.picker.count)
-}
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return self.picker.count
+        print ("fuck")
+        print (self.picker.count)
+    }
 
-func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-    return self.picker[row]
-}
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return self.picker[row]
+    }
 
-func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//    TaskGlobalStorage.emergency_contact_name = self.picker[row]
-    TaskGlobalStorage.emergency_contact_id = contact_id[row]
-//    TaskGlobalStorage.emergency_contact_phone = contact_phone[row]
-    self.selectedContact.text = "Selected Contact: \(self.picker[row])"
-    print (TaskGlobalStorage.emergency_contact_name)
-    print(TaskGlobalStorage.emergency_contact_id)
-    print(TaskGlobalStorage.emergency_contact_phone)
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    //    TaskGlobalStorage.emergency_contact_name = self.picker[row]
+        TaskGlobalStorage.emergency_contact_id = contact_id[row]
+    //    TaskGlobalStorage.emergency_contact_phone = contact_phone[row]
+        self.selectedContact.text = "Selected Contact: \(self.picker[row])"
+        print (TaskGlobalStorage.emergency_contact_name)
+        print(TaskGlobalStorage.emergency_contact_id)
+        print(TaskGlobalStorage.emergency_contact_phone)
+        }
+    
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        let attributedString = NSAttributedString(string: picker[row], attributes: [NSForegroundColorAttributeName : UIColor.white])
+        return attributedString
     }
 }
 
