@@ -233,4 +233,9 @@ class Step1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         print(TaskGlobalStorage.task_id)
     }
     
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        let attributedString = NSAttributedString(string: picker[row], attributes: [NSForegroundColorAttributeName : UIColor.white])
+        return attributedString
+    }
+    
 }
