@@ -253,6 +253,9 @@ class Step3ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         print(data)
         if let timeRemaining = data["timeRemaining"].int{
             self.total = timeRemaining
+            DispatchQueue.main.async {
+                self.stopButton.isHidden = false;
+            }
         }
     }
     
