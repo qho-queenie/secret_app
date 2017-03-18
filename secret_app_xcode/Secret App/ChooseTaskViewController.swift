@@ -97,12 +97,16 @@ class Step1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         for index in 0..<JSON_response["data"].count{
             var toAppend = JSON_response["data"][index]["event_name"]
             var toAppendEventId = JSON_response["data"][index]["id"]
-            print("event:\(toAppend) id:\(toAppendEventId)")
-            self.picker.append(toAppend.string!)
-            self.public_event_id.append(toAppendEventId.int!)
+
+            if let eventName = toAppend.string{
+                self.picker.append(eventName)
+            }
+            if let eventID = toAppendEventId.int{
+                self.public_event_id.append(eventID)
+            }
         }
         
-        if JSON_response["data"].count > 0{
+        if picker.count > 0{
             TaskGlobalStorage.task_name = picker[0]
             TaskGlobalStorage.task_id = public_event_id[0]
         }
@@ -134,6 +138,7 @@ class Step1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
+        print("viewWillAppear function")
         loadData()
     }
     
