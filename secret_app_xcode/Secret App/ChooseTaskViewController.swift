@@ -15,20 +15,21 @@ public class TaskGlobalStorage{
     public static var additional_message:String = ""
     public static var contact_available:Bool = false
     public static var ip_add = "54.193.124.182"
-    
 }
 
 class Step1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     @IBOutlet weak var editProfile: UIButton!
-    
     @IBOutlet weak var valid: UILabel!
     @IBOutlet weak var add_event: UIButton!
     @IBOutlet weak var remove_task: UIButton!
     var picker: [String] = [String]()
     var public_event_id : [Int] = [Int]()
+
     @IBOutlet weak var eventPicker: UIPickerView!
-    
     override func viewDidLoad() {
+        eventPicker.layer.borderColor = UIColor.white.cgColor
+        eventPicker.layer.borderWidth = 1
+
         super.viewDidLoad()
         print("Step 1 View Controller")
         self.eventPicker.delegate = self
