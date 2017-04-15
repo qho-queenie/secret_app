@@ -5,7 +5,7 @@ import UIKit
 class LoginController: UIViewController {
 
 
-    @IBOutlet weak var no_record: UILabel!
+
     @IBOutlet weak var validation: UILabel!
     @IBOutlet weak var password_login: UITextField!
     @IBOutlet weak var email_login: UITextField!
@@ -65,7 +65,7 @@ class LoginController: UIViewController {
                 else {
                     print ((json["validation_errors"][0].string)!)
                     self.validation.text = " "
-                    self.no_record.text = " "
+//                    self.no_record.text = " "
                     for index in 0..<(json["validation_errors"].array)!.count {
                         self.validation.text! += (json["validation_errors"][index].string)!
                     }
@@ -115,16 +115,16 @@ class LoginController: UIViewController {
     func post_retrieve_password(data: JSON){
         print(data["validation_errors"])
         DispatchQueue.main.async {
-            self.no_record.text = " "
+//            self.no_record.text = " "
             self.validation.text = " "
         for index in 0..<data["validation_errors"].count{
             let toAppend = data["validation_errors"][index]
             print("the error is:\(toAppend)")
             if (toAppend == "Please check your email."){
-                self.no_record.text! += (toAppend.string)!
+                self.validation.text! += (toAppend.string)!
             }
             else {
-                self.no_record.text! += (toAppend.string)!
+                self.validation.text! += (toAppend.string)!
             }
             }
         }
