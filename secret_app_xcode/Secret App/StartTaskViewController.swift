@@ -40,7 +40,7 @@ class Step3ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 //        }
         
         print(TaskGlobalStorage.user_first_name)
-//        self.editProfile.setTitle(TaskGlobalStorage.user_first_name, for: .normal)
+        self.editProfile.setTitle(TaskGlobalStorage.user_first_name, for: .normal)
         print (TaskGlobalStorage.emergency_contact_id)
         print (TaskGlobalStorage.emergency_contact_name)
         print (TaskGlobalStorage.emergency_contact_phone)

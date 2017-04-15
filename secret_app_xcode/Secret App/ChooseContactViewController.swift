@@ -26,7 +26,7 @@ class Step2ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         self.contactPicker.delegate = self
         self.contactPicker.dataSource = self
         print("Step 2 View Controller")
-//        self.editProfile.setTitle(TaskGlobalStorage.user_first_name, for: .normal)
+        self.editProfile.setTitle(TaskGlobalStorage.user_first_name, for: .normal)
     }
     
     override func didReceiveMemoryWarning() {
