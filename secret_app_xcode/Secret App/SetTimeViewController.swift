@@ -19,7 +19,7 @@ class SetTimeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Set Time View Controller")
-            self.editProfile.setTitle(TaskGlobalStorage.user_first_name, for: .normal)
+//            self.editProfile.setTitle(TaskGlobalStorage.user_first_name, for: .normal)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         

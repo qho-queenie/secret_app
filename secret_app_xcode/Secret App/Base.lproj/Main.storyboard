@@ -257,7 +257,7 @@
                                     <constraint firstAttribute="height" constant="65" id="Tlu-rG-sSw"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="edit">
+                                <state key="normal" title="Profile">
                                     <color key="titleColor" red="0.96110016107559204" green="0.54696059226989746" blue="0.014314253814518452" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -768,7 +768,7 @@ Choose a task below.</string>
                                     <constraint firstAttribute="height" constant="30" id="wxP-gm-Teu"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="25"/>
-                                <state key="normal" title="edit">
+                                <state key="normal" title="Profile">
                                     <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -1153,7 +1153,7 @@ Choose a task below.</string>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E5z-ei-Xgq">
                                 <rect key="frame" x="0.0" y="8" width="368" height="61"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                <state key="normal" title="edit">
+                                <state key="normal" title="Profile">
                                     <color key="titleColor" red="0.92160910370000004" green="0.51931256059999997" blue="0.048383668069999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -1290,7 +1290,7 @@ You can start your task after choosing an available contact.</string>
                                     <constraint firstAttribute="height" constant="44" id="r8B-po-mll"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                <state key="normal" title="edit">
+                                <state key="normal" title="Profile">
                                     <color key="titleColor" red="0.92160910370000004" green="0.51931256059999997" blue="0.048383668069999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -1362,6 +1362,6 @@ You can start your task after choosing an available contact.</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Kve-4o-Ra7"/>
-        <segue reference="qdc-pT-QXx"/>
+        <segue reference="qFy-oL-6u3"/>
     </inferredMetricsTieBreakers>
 </document>

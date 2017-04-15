@@ -117,7 +117,7 @@ class Step1ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         
         DispatchQueue.main.async {
             self.eventPicker.reloadAllComponents()
-            self.editProfile.setTitle(TaskGlobalStorage.user_first_name, for: .normal)
+//            self.editProfile.setTitle(TaskGlobalStorage.user_first_name, for: .normal)
         }
     }
 
